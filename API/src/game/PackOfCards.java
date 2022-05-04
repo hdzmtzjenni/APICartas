@@ -1,5 +1,6 @@
 package game;
 import java.util.ArrayList;
+
 public class PackOfCards {
 
 	ArrayList<Card> pack;
@@ -17,10 +18,15 @@ public class PackOfCards {
 	}
 	
 	public void startPack() {
-		int count=0;
-		for(int i =0; i<4; i++) {
-			for(int j=0; i<13; i++) {
-				pack.add(new Card(count++,Suits.CORAZON,j));
+		ArrayList<Suits> suits = new ArrayList<>();
+		suits.add(Suits.HEART); suits.add(Suits.DIAMOND);
+		suits.add(Suits.PIKES); suits.add(Suits.CLUBS);
+		
+		int count=1;
+		for(int i =1; i<5; i++) {
+			for(int j=1; j<14; j++) {
+				Card e = new Card(count++,suits.get(i-1),j, null);
+				pack.add(e);
 			}
 		}
 	}

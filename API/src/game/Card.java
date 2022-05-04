@@ -4,13 +4,13 @@ public class Card {
 	private Suits suit;
 	private int number;
 	private int id;
-	//private String image;
+	private String image;
 	
-	public Card(int id, Suits suit, int number) {
+	public Card(int id, Suits suit, int number,String image) {
 		setSuit(suit);
 		setNumber(number);
 		setId(id);
-//		setImage(image);
+		setImage(image);
 	}
 
 	public void setSuit(Suits suit) {
@@ -25,9 +25,14 @@ public class Card {
 		this.id = id;
 	}
 	
-//	public void setImage(String image) {
-//		this.image=image;
-//	}
+	public void setImage(String image) {
+		this.image=image;
+	}
+	
+	@Override
+	public String toString() {
+		return id + ",N" + number + ","+suit;
+	}
 	
 	
 	

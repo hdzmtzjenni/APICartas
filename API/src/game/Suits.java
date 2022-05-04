@@ -1,10 +1,10 @@
 package game;
 
 public enum Suits {
-	CORAZON("Corazon"),
-	DIAMANTE("Diamante"),
-	ESPADA("Espada"),
-	TREBOL("Trebol");
+	HEART("heart"),
+	DIAMOND("diamond"),
+	PIKES("pikes"),
+	CLUBS("clubs");
 	
 	private String nombre;
 	
