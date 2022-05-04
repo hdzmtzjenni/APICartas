@@ -31,11 +31,26 @@ public class PackOfCards {
 		}
 	}
 	
+	public void sortCards() {
+		int length =this.pack.size();
+		Card temp;
+		int rand;
+		
+		for(int i= length-1;i>=0;i--){
+			rand = (int)(Math.random()*i + 0);
+			temp = this.pack.get(rand);
+			this.pack.set(rand, this.pack.get(i));
+			this.pack.set(i, temp);
+		}
+	}
 	public static void main(String[] args) {
 		PackOfCards a = new PackOfCards();
 		a.startPack();
-		System.out.println(a.getPack().toString());;
+		System.out.println(a.getPack().toString());
+		a.sortCards();
+		System.out.println(a.getPack().toString());
 	}
+	
 
 	
 	
