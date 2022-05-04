@@ -1,13 +1,16 @@
+package game;
 
 public class Card {
 	private Suits suit;
 	private int number;
 	private int id;
+	//private String image;
 	
-	public Card(Suits suit, int number, int id) {
+	public Card(int id, Suits suit, int number) {
 		setSuit(suit);
 		setNumber(number);
 		setId(id);
+//		setImage(image);
 	}
 
 	public void setSuit(Suits suit) {
@@ -21,6 +24,10 @@ public class Card {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+//	public void setImage(String image) {
+//		this.image=image;
+//	}
 	
 	
 	

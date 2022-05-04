@@ -1,3 +1,4 @@
+package game;
 
 public enum Suits {
 	CORAZON("Corazon"),
