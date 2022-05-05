@@ -29,6 +29,22 @@ public class Card {
 		this.image=image;
 	}
 	
+	public Suits getSuit() {
+		return suit;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
 	@Override
 	public String toString() {
 		return id + ",N" + number + ","+suit;
