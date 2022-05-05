@@ -2,6 +2,10 @@ package game;
 
 import java.util.ArrayList;
 
+/*
+ * Esta clase define a cada jugador del juego
+ * @author Jennifer Hernández,Gabriel Olvera
+ */
 public class Player {
 	public ArrayList<Card> p_hand;
 	public String name;
