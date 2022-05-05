@@ -1,5 +1,8 @@
 package game;
-
+/*
+ * Esta es una enumeración que contiene los palos de la baraja
+ * @author Jennifer Hernández,Gabriel Olvera
+ */
 public enum Suits {
 	HEART("heart"),
 	DIAMOND("diamond"),
