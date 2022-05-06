@@ -10,6 +10,10 @@ public class Player {
 	public ArrayList<Card> p_hand;
 	public String name;
 	
+	public Player(String name) {
+		setName(name);
+	}
+	
 	public Player(ArrayList<Card> p_hand, String name, int numPlayer) {
 		this.p_hand = p_hand;
 		this.name = name;
