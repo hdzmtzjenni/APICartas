@@ -10,14 +10,14 @@ public class Player {
 	public ArrayList<Card> p_hand;
 	public String name;
 	
+	public Player(){
+		
+	}
 	public Player(String name) {
 		setName(name);
 	}
 	
-	public Player(ArrayList<Card> p_hand, String name, int numPlayer) {
-		this.p_hand = p_hand;
-		this.name = name;
-	}
+	
 
 	public ArrayList<Card> getP_hand() {
 		return p_hand;

@@ -33,5 +33,13 @@ public class PokerGame extends CardGame{
         player.name= name;
 		playerList.add(player);
     }
+    @Override
+    public void removePlayer(String name) {
+        for (int i = 0; i<playerList.size();i++) {
+			Player player = playerList.get(i);
+			if(player.name == name) playerList.remove(i);
+		}
+    }
+    
     
 }
