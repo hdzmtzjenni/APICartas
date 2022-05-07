@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class IntelligentPlayer extends BlackJackPlayer {
 	
+	
 
-	public IntelligentPlayer(ArrayList<Card> p_hand, String name, int numPlayer) {
-		super(p_hand, name, numPlayer);
+	public IntelligentPlayer(){
+
 	}
-
+	
 	public IntelligentPlayer(String name) {
 		super(name);
 		

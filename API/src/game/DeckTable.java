@@ -9,7 +9,6 @@ public class DeckTable {
 	private ArrayList<Player> playerList;
 	
 	public DeckTable() {
-		
 	}
 	
 	public void setPlayers(int n) {
