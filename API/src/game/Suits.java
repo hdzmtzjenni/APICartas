@@ -1,7 +1,7 @@
 package game;
 /*
- * Esta es una enumeración que contiene los palos de la baraja
- * @author Jennifer Hernández,Gabriel Olvera
+ * Esta es una enumeracion que contiene los palos de la baraja
+ * @author Jennifer Hernandez,Gabriel Olvera
  */
 public enum Suits {
 	HEART("heart"),

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /*
  * Esta clase define a cada jugador del juego
- * @author Jennifer Hernández,Gabriel Olvera
+ * @author Jennifer Hernandez,Gabriel Olvera
  */
 public class Player {
 	public ArrayList<Card> p_hand;

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /*
  * Esta clase define una baraja de cartas
- * @author Jennifer Hernández,Gabriel Olvera
+ * @author Jennifer Hernandez,Gabriel Olvera
  */
 public class PackOfCards {
 // Atributos
@@ -18,7 +18,7 @@ public class PackOfCards {
 	}
 
 	/*
-	 * Método que devuelve el arreglo de la baraja
+	 * Metodo que devuelve el arreglo de la baraja
 	 * @return el arreglo de la baraja
 	 */
 	public ArrayList<Card> getPack() {
@@ -30,7 +30,7 @@ public class PackOfCards {
 	}
 	
 	/*
-	 * Método que asigna las 52 cartas al arreglo de la baraja 
+	 * Metodo que asigna las 52 cartas al arreglo de la baraja 
 	 */
 	public void startPack() {
 		ArrayList<Suits> suits = new ArrayList<>();
