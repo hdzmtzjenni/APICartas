@@ -2,7 +2,7 @@ package game;
 
 public abstract class CardGame {
 	public void start() {
-		//revolver y repartir el juego
+		
 	}
 	
 	public abstract void winConditions();
