@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class BlackJackGame extends CardGame {
 	public PackOfCards pack;
 	protected int IndexNextPlayer=0;
-	private ArrayList<Card> inTable;
 	public static ArrayList<Player> playerList = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
@@ -90,7 +89,6 @@ public class BlackJackGame extends CardGame {
 	public void start() {
 		// Se inicializan los arreglos y se bajarean las cartas
 		pack = new PackOfCards();
-		inTable = new ArrayList<>();
 		pack.startPack();
 		pack.sortCards();
 		for (Player player : playerList) {
@@ -102,13 +100,11 @@ public class BlackJackGame extends CardGame {
 		for (int i = 0; i< playerList.size(); i++) {
 			for(int j=0; j<2; j++){
 				hand.add(pack.getPack().get(j));
-				inTable.add(pack.getPack().get(j));
 				pack.getPack().remove(j);
 			}
 			playerList.get(i).p_hand = hand;
 			// System.out.println(playerList.get(i).getP_hand());
 			hand.removeAll(hand);
-
 		}
 
 		// System.out.println();
