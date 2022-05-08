@@ -10,6 +10,7 @@ public abstract class Player {
 	public ArrayList<Card> p_hand = new ArrayList<>();
 	public String name;
 	public int turn =0;
+	public boolean handReady=false;
 	
 	public Player(){
 		
@@ -21,7 +22,7 @@ public abstract class Player {
 	public abstract void drawCard();
 	public abstract void putCardInTrashPile();
 	public abstract void passTurn();
-	
+
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
 	}
