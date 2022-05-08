@@ -42,6 +42,9 @@ public class BlackJackGame extends CardGame {
 
 	}
 
+/**
+ * Método que elimina a todos los jugadores
+ */
 	@Override
 	public void reset() {
 		playerList.removeAll(playerList);
