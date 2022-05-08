@@ -11,11 +11,6 @@ public class PokerGame extends CardGame{
     public PokerGame(){
         
     }
-    @Override
-    public void winConditions() {
-        // TODO Auto-generated method stub
-        
-    }
 
     @Override
     public boolean endGame() {

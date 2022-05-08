@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 
-
 /**
  * @author jenniferh
  * 
@@ -48,11 +47,6 @@ public class BlackJackGame extends CardGame {
 	@Override
 	public void reset() {
 		playerList.removeAll(playerList);
-	}
-	
-	@Override
-	public void winConditions() {
-		
 	}
 
 	@Override
