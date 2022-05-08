@@ -68,7 +68,7 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public Player getWinner() { 
-		
+		return null;
 	}
 
 	@Override
