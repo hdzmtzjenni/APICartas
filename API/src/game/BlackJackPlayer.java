@@ -29,6 +29,12 @@ public abstract class BlackJackPlayer extends Player {
 			value = value + 10;
 		return value;
 	}
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
