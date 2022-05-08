@@ -18,6 +18,23 @@ public class BlackJackGame extends CardGame {
 	public BlackJackGame(){
 	}
 
+	public void reset() {
+		
+	}
+	
+	public Player nexPlayer() {
+		return null;
+	}
+	
+	public static IntelligentPlayer createIntelligentPlayer() {
+		return new IntelligentPlayer();
+	}
+	
+	public static StuplidPlayer createStuplidPlayer() {
+		return new StuplidPlayer();
+
+	}
+
 	@Override
 	public void winConditions() {
 	}
@@ -31,37 +48,29 @@ public class BlackJackGame extends CardGame {
 	public Player getWinner() {
 		return null;
 	}
-	
-	public void reset() {
-		
-	}
-	
-	public Player nexPlayer() {
-		return null;
-	}
-	
+
 	@Override
 	public void addPlayer(String name, Player player) {
 		player.name= name;
 		playerList.add(player);
 
 	}
-	
-	public static IntelligentPlayer createIntelligentPlayer() {
-		return new IntelligentPlayer();
-	}
-	
-	public static StuplidPlayer createStuplidPlayer() {
-		return new StuplidPlayer();
 
-	}
-	
 	@Override
 	public void removePlayer(String name) {
 		for (int i = 0; i<playerList.size();i++) {
 			Player player = playerList.get(i);
 			if(player.name == name) playerList.remove(i);
 		}
+	}
+
+	@Override
+	public void start() {
+		PackOfCards a = new PackOfCards();
+		a.startPack();
+		a.sortCards();
+				
+		
 	}
 
 }
