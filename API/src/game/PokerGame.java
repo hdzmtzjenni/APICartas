@@ -26,8 +26,11 @@ public class PokerGame extends CardGame{
 
     @Override
     public void addPlayer(String name, Player player) {
-        player.name= name;
-		playerList.add(player);
+        if(player instanceof PokerPlayer || player instanceof UserPlayer) {
+			playerList.add(player);
+		}
+		else System.out.printf("Este player no sabe jugar Poker ");
+		
     }
     @Override
     public void removePlayer(String name) {
