@@ -23,7 +23,7 @@ public class UserPlayer extends Player{
 	}
 
 	@Override
-	public Boolean play(ArrayList<Card> p_hand) {
+	public Boolean play() {
 		
 		return false;
 	}

@@ -39,7 +39,7 @@ public abstract class Player {
 		this.name = name;
 	}
 	
-	public abstract Boolean play(ArrayList<Card> p_hand); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
+	public abstract Boolean play(); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
 	
 
 

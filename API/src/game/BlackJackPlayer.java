@@ -31,7 +31,7 @@ public abstract class BlackJackPlayer extends Player {
 	}
 
 	@Override
-	public Boolean play(ArrayList<Card> p_hand) {
+	public Boolean play() {
 		return false;
 		// TODO Auto-generated method stub
 		

@@ -17,7 +17,7 @@ public class StuplidPlayer extends BlackJackPlayer{
     }
 
 	@Override
-	public Boolean play(ArrayList<Card> p_hand) {
+	public Boolean play() {
 		// TODO Auto-generated method stub
 		
 		return false;

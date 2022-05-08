@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PokerPlayer extends Player {
 
 	@Override
-	public Boolean play(ArrayList<Card> p_hand) {
+	public Boolean play() {
 		// TODO Auto-generated method stub
 		return false;
 		

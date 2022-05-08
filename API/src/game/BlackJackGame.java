@@ -124,11 +124,13 @@ public class BlackJackGame extends CardGame {
 		stillPlaying.addAll(playerList);
 		Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador\
 		while (checkEndOfRounds(stillPlaying)) {
-			Boolean probableWinner = p.play(p.p_hand); // Todos los jugadores juegan con las cartas que se les dio, 
+			Boolean probableWinner = p.play(); // Todos los jugadores juegan con las cartas que se les dio, 
 			if(probableWinner == false ) {
 				stillPlaying.remove(p);
 			}
-			
+		}
+		
+		for (Player player :stillPlaying) {
 			
 			
 		}
