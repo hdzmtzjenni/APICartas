@@ -2,12 +2,15 @@ package game;
 
 import java.util.ArrayList;
 
+
 /**
  * @author jenniferh
  * 
  *
  */
 public class BlackJackGame extends CardGame {
+	public PackOfCards pack;
+	private ArrayList<Card> inTable;
 	public static ArrayList<Player> playerList = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
@@ -66,11 +69,33 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public void start() {
-		PackOfCards a = new PackOfCards();
-		a.startPack();
-		a.sortCards();
-				
-		
+		// Se inicializan los arreglos y se bajarean las cartas
+		pack = new PackOfCards();
+		inTable = new ArrayList<>();
+		pack.startPack();
+		pack.sortCards();
+
+		//Se reparten 2 cartas a cada jugador para empezar el juego
+		ArrayList<Card> hand = new ArrayList<>();
+		for (int i = 0; i< playerList.size(); i++) {
+			for(int j=0; j<2; j++){
+				hand.add(pack.getPack().get(j));
+				inTable.add(pack.getPack().get(j));
+				pack.getPack().remove(j);
+			}
+			// playerList.get(i).p_hand = hand;
+			// System.out.println(playerList.get(i).getP_hand());
+			hand.removeAll(hand);
+
+		}
+
+		// System.out.println(hand.toString());
+		// System.out.println();
+		// System.out.println(inTable.toString());
+		// System.out.println();
+		// Collections.sort(pack.getPack());
+		// System.out.println(pack.getPack().toString());
+
 	}
 
 }

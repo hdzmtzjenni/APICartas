@@ -22,6 +22,7 @@ public class Test {
 		blackjack.addPlayer("Joseph",player6);
 		blackjack.addPlayer("Anna",BlackJackGame.createIntelligentPlayer());
 		System.out.println(BlackJackGame.playerList.size());
+		blackjack.start();
 		
 	}
 
