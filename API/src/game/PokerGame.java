@@ -40,6 +40,11 @@ public class PokerGame extends CardGame{
 			if(player.name == name) playerList.remove(i);
 		}
     }
+    @Override
+    public void start() {
+        // TODO Auto-generated method stub
+        
+    }
     
     
 }

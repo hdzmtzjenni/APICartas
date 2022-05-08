@@ -74,6 +74,9 @@ public class BlackJackGame extends CardGame {
 		inTable = new ArrayList<>();
 		pack.startPack();
 		pack.sortCards();
+		for (Player player : playerList) {
+			player.p_hand.removeAll(player.p_hand);
+		}
 
 		//Se reparten 2 cartas a cada jugador para empezar el juego
 		ArrayList<Card> hand = new ArrayList<>();
@@ -83,18 +86,18 @@ public class BlackJackGame extends CardGame {
 				inTable.add(pack.getPack().get(j));
 				pack.getPack().remove(j);
 			}
-			// playerList.get(i).p_hand = hand;
+			playerList.get(i).p_hand = hand;
 			// System.out.println(playerList.get(i).getP_hand());
 			hand.removeAll(hand);
 
 		}
 
-		// System.out.println(hand.toString());
 		// System.out.println();
 		// System.out.println(inTable.toString());
 		// System.out.println();
 		// Collections.sort(pack.getPack());
 		// System.out.println(pack.getPack().toString());
+		// System.out.println("\n size:"+pack.getPack().size());
 
 	}
 

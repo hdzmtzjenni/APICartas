@@ -15,13 +15,12 @@ public class Test {
 		
 		CardGame blackjack = new BlackJackGame();
 		Player player4 = BlackJackGame.createIntelligentPlayer();
+		Player player5 = BlackJackGame.createStuplidPlayer();
 		Player player6 = new UserPlayer();
-		CardGame poker = new PokerGame();
-		poker.addPlayer("oli", player4);
-		blackjack.addPlayer("John", player4);
+		blackjack.addPlayer("John",player4);
+		blackjack.addPlayer("Mary",player5);
 		blackjack.addPlayer("Joseph",player6);
 		blackjack.addPlayer("Anna",BlackJackGame.createIntelligentPlayer());
-		System.out.println(BlackJackGame.playerList.size());
 		blackjack.start();
 		
 	}

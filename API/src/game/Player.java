@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Jennifer Hernandez,Gabriel Olvera
  */
 public class Player {
-	public ArrayList<Card> p_hand;
+	public ArrayList<Card> p_hand = new ArrayList<>();
 	public String name;
 	
 	public Player(){
