@@ -35,6 +35,12 @@ public class IntelligentPlayer extends BlackJackPlayer {
 		
 		
 	}
+
+	@Override
+	public void putCardInTrashPile() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

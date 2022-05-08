@@ -19,6 +19,12 @@ public class StuplidPlayer extends BlackJackPlayer{
 		// TODO Auto-generated method stub
 		
 	}
+
+    @Override
+    public void putCardInTrashPile() {
+        // TODO Auto-generated method stub
+        
+    }
     
     
     

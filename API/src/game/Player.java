@@ -18,6 +18,10 @@ public abstract class Player {
 		setName(name);
 	}
 	
+	public abstract void drawCard();
+	public abstract void putCardInTrashPile();
+	public abstract void passTurn();
+	
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
 	}

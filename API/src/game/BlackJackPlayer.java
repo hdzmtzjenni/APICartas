@@ -7,8 +7,7 @@ public abstract class BlackJackPlayer extends Player {
 		
 	}
 	
-	public abstract void drawCard();
-	public abstract void passTurn();
+
 	public int getBlackJackvalue(){
 		int value=0;
 		boolean as= false;

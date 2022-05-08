@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 public class BlackJackGame extends CardGame {
-	public PackOfCards pack;
+	public static PackOfCards pack;
 	protected int IndexNextPlayer=0;
 	public static ArrayList<Player> playerList = new ArrayList<>() ;
 	public static ArrayList<Player> stillPlaying = new ArrayList<>() ;
