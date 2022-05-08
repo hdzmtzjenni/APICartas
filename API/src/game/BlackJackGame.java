@@ -105,8 +105,9 @@ public class BlackJackGame extends CardGame {
 				hand.add(pack.getPack().get(j));
 				pack.getPack().remove(j);
 			}
-			playerList.get(i).p_hand = hand;
-			// System.out.println(playerList.get(i).getP_hand());
+			Player player = playerList.get(i);
+			player.setP_hand(hand);
+			System.out.println(playerList.get(i).getP_hand());
 			hand.removeAll(hand);
 		}
 
