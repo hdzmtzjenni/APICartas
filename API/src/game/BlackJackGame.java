@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class BlackJackGame extends CardGame {
 	public PackOfCards pack;
 	protected int IndexNextPlayer=0;
-	public static ArrayList<BlackJackPlayer> playerList = new ArrayList<>() ;
-	public static ArrayList<BlackJackPlayer> stillPlaying = new ArrayList<>() ;
+	public static ArrayList<Player> playerList = new ArrayList<>() ;
+	public static ArrayList<Player> stillPlaying = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
 	
@@ -67,8 +67,11 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public void addPlayer(String name, Player player) {
-//		player.name= name;
-//		playerList.add(player);
+		if(player instanceof BlackJackPlayer || player instanceof UserPlayer) {
+			playerList.add(player);
+		}
+		else System.out.printf("Este player no sabe jugar BlackJack ");
+		
 
 	}
 
