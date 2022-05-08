@@ -13,5 +13,13 @@ public class StuplidPlayer extends BlackJackPlayer{
         // TODO Auto-generated method stub
         
     }
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    
     
 }

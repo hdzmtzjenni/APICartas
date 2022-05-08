@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Esta clase define a cada jugador del juego
  * @author Jennifer Hernandez,Gabriel Olvera
  */
-public class Player {
+public abstract class Player {
 	public ArrayList<Card> p_hand = new ArrayList<>();
 	public String name;
 	public int turn =0;
@@ -33,7 +33,9 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	public abstract void play();
+	
 
 
 	
