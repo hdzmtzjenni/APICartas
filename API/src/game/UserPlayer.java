@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 public class UserPlayer extends Player{
     
     
@@ -21,7 +23,8 @@ public class UserPlayer extends Player{
 	}
 
 	@Override
-	public void play() {
+	public Boolean play(ArrayList<Card> p_hand) {
 		
+		return false;
 	}
 }

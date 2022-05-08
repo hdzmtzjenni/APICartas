@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 public class StuplidPlayer extends BlackJackPlayer{
 
     @Override
@@ -15,8 +17,10 @@ public class StuplidPlayer extends BlackJackPlayer{
     }
 
 	@Override
-	public void play() {
+	public Boolean play(ArrayList<Card> p_hand) {
 		// TODO Auto-generated method stub
+		
+		return false;
 		
 	}
 

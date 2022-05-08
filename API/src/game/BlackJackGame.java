@@ -51,13 +51,18 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public boolean endGame() {
-		int sumTurn=0;
-		for (Player player : playerList) {
-			if(player.turn==1) sumTurn++;
+	public boolean checkEndOfRounds(ArrayList<Player> players) {
+		int allReady = 0;
+		for (Player p : players ) {
+			if (p.handReady == true) {
+				allReady ++;
+			}
+			if (allReady == players.size()) {
+				return true; // debemos terminar la ronda
+			}
+			
 		}
-		if (sumTurn==playerList.size()) return true;
-		return false;
+		return false; // aun no se termina la ronda 
 	}
 
 	@Override
@@ -115,9 +120,20 @@ public class BlackJackGame extends CardGame {
 	}
 	
 	public void playBlackJack() {
-		while (endGame() == false) {
-			Player playing = nextPlayer();
+		stillPlaying.clear();
+		stillPlaying.addAll(playerList);
+		Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador\
+		while (checkEndOfRounds(stillPlaying)) {
+			Boolean probableWinner = p.play(p.p_hand); // Todos los jugadores juegan con las cartas que se les dio, 
+			if(probableWinner == false ) {
+				stillPlaying.remove(p);
+			}
+			
+			
+			
 		}
+		
+		
 	}
 	
 	

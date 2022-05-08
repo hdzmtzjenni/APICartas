@@ -13,7 +13,7 @@ public class PokerGame extends CardGame{
     }
 
     @Override
-    public boolean endGame() {
+    public boolean checkEndOfRounds(ArrayList<Player> players) {
         // TODO Auto-generated method stub
         return false;
     }

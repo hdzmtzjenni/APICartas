@@ -1,10 +1,13 @@
 package game;
 
+import java.util.ArrayList;
+
 public class PokerPlayer extends Player {
 
 	@Override
-	public void play() {
+	public Boolean play(ArrayList<Card> p_hand) {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
