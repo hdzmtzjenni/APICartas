@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class BlackJackGame extends CardGame {
 	public PackOfCards pack;
 	protected int IndexNextPlayer=0;
-	public static ArrayList<Player> playerList = new ArrayList<>() ;
+	public static ArrayList<BlackJackPlayer> playerList = new ArrayList<>() ;
+	public static ArrayList<BlackJackPlayer> stillPlaying = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
 	
@@ -66,8 +67,8 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public void addPlayer(String name, Player player) {
-		player.name= name;
-		playerList.add(player);
+//		player.name= name;
+//		playerList.add(player);
 
 	}
 
@@ -109,5 +110,14 @@ public class BlackJackGame extends CardGame {
 		// System.out.println("\n size:"+pack.getPack().size());
 
 	}
+	
+	public void playBlackJack() {
+		while (endGame() == false) {
+			Player playing = nextPlayer();
+		}
+	}
+	
+	
+	
 
 }
