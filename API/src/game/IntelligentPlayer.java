@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 
 public class IntelligentPlayer extends BlackJackPlayer {
 	
@@ -10,10 +9,6 @@ public class IntelligentPlayer extends BlackJackPlayer {
 
 	}
 	
-	public IntelligentPlayer(String name) {
-		super(name);
-		
-	}
 	@Override
 	public void drawCard() {
 		

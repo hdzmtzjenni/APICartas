@@ -4,12 +4,13 @@ package game;
  * Esta clase define cada una de las cartas de la baraja
  * @author Jennifer Hernandez,Gabriel Olvera
  */
-public class Card {
+public class Card implements Comparable<Card>{
 //	Atributos
-	private Suits suit;
-	private int number;
-	private int id;
-	private String image;
+	protected Suits suit;
+	protected int number;
+	protected int id;
+	protected String image;
+	protected  String  color;
 	
 	/*
 	 * Constructor de la clase Card
@@ -18,11 +19,12 @@ public class Card {
 	 * @param number es el numero que identifica a la carta
 	 * @param image es la dirección para la imagen de cada carta
 	 */
-	public Card(int id, Suits suit, int number,String image) {
+	public Card(int id, Suits suit, int number,String image,String color) {
 		setSuit(suit);
 		setNumber(number);
 		setId(id);
 		setImage(image);
+		setColor(color);
 	}
 
 	/*
@@ -56,6 +58,15 @@ public class Card {
 		this.image=image;
 	}
 	
+	
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	/*
 	 * Metodo que devuelve el palo de la carta
 	 * @return el palo de la carta
@@ -90,7 +101,14 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return id + ",N" + number + ","+suit;
+		return id + "|N" + number + "|"+suit + "|"+color;
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		if(this.number == o.number) return 0;
+		if(this.number< o.number) return -1;
+		return 1;
 	}
 	
 	

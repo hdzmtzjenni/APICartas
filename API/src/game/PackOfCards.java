@@ -40,8 +40,15 @@ public class PackOfCards {
 		int count=1;
 		for(int i =1; i<5; i++) {
 			for(int j=1; j<14; j++) {
-				Card e = new Card(count++,suits.get(i-1),j, null);
-				pack.add(e);
+				if (i>2) {
+					Card e = new Card(count++,suits.get(i-1),j, null,"Negra");
+					pack.add(e);
+				}
+				else{
+					Card e = new Card(count++,suits.get(i-1),j, null,"Roja");
+					pack.add(e);
+				}
+				
 			}
 		}
 	}
@@ -61,5 +68,6 @@ public class PackOfCards {
 			this.pack.set(i, temp);
 		}
 	}
+
 
 }
