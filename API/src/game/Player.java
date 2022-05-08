@@ -39,6 +39,11 @@ public abstract class Player {
 		this.name = name;
 	}
 	
+	@Override
+	public String toString(){
+		return this.name;
+	}
+	
 	public abstract Boolean play(); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
 	
 

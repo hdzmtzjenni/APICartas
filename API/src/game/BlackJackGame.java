@@ -41,9 +41,17 @@ public class BlackJackGame extends CardGame {
 
 	}
 
+	
+	public static ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	public static void setPlayerList(ArrayList<Player> playerList) {
+		BlackJackGame.playerList = playerList;
+	}
 
 /**
- * Método que elimina a todos los jugadores
+ * Metodo que elimina a todos los jugadores
  */
 	@Override
 	public void reset() {
@@ -73,9 +81,10 @@ public class BlackJackGame extends CardGame {
 	@Override
 	public void addPlayer(String name, Player player) {
 		if(player instanceof BlackJackPlayer || player instanceof UserPlayer) {
+			player.name= name;
 			playerList.add(player);
 		}
-		else System.out.printf("Este player no sabe jugar BlackJack ");
+		else System.out.printf("Este jugador no sabe jugar BlackJack ");
 		
 
 	}
@@ -112,7 +121,6 @@ public class BlackJackGame extends CardGame {
 		}
 
 		// System.out.println();
-		// System.out.println(inTable.toString());
 		// System.out.println();
 		// Collections.sort(pack.getPack());
 		// System.out.println(pack.getPack().toString());
