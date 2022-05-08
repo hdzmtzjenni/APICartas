@@ -42,6 +42,7 @@ public class BlackJackGame extends CardGame {
 
 	}
 
+
 /**
  * Método que elimina a todos los jugadores
  */
@@ -52,16 +53,22 @@ public class BlackJackGame extends CardGame {
 	
 	@Override
 	public void winConditions() {
+		
 	}
 
 	@Override
 	public boolean endGame() {
+		int sumTurn=0;
+		for (Player player : playerList) {
+			if(player.turn==1) sumTurn++;
+		}
+		if (sumTurn==playerList.size()) return true;
 		return false;
 	}
 
 	@Override
-	public Player getWinner() {
-		return null;
+	public Player getWinner() { 
+		
 	}
 
 	@Override

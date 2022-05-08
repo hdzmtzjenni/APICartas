@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Player {
 	public ArrayList<Card> p_hand = new ArrayList<>();
 	public String name;
+	public int turn =0;
 	
 	public Player(){
 		
@@ -17,8 +18,6 @@ public class Player {
 		setName(name);
 	}
 	
-	
-
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
 	}
@@ -33,6 +32,14 @@ public class Player {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getBlackJackvalue(){
+		int sum =0;
+		for (int i = 0; i < p_hand.size(); i++) {
+			sum+= p_hand.get(i).number;
+		}
+		return sum;
 	}
 
 	
