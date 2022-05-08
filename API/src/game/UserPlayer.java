@@ -1,7 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-
 public class UserPlayer extends Player{
     
     
@@ -21,10 +19,11 @@ public class UserPlayer extends Player{
 	public void passTurn(){
 		
 	}
-
 	@Override
 	public Boolean play() {
-		
-		return false;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 }

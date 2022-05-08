@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 
 public abstract class BlackJackPlayer extends Player {
 	
@@ -30,12 +29,5 @@ public abstract class BlackJackPlayer extends Player {
 		return value;
 	}
 
-	@Override
-	public Boolean play() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
 	
-
 }
