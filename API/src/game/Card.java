@@ -27,7 +27,9 @@ public class Card implements Comparable<Card>{
 		setColor(color);
 	}
 
-	/*
+
+
+    /*
 	 * Metodo que actualiza el valor del atributo suit
 	 */
 	public void setSuit(Suits suit) {
@@ -101,7 +103,7 @@ public class Card implements Comparable<Card>{
 
 	@Override
 	public String toString() {
-		return id + "|N" + number + "|"+suit + "|"+color;
+		return "|N" + number + "|"+suit + "|"+color;
 	}
 
 	@Override

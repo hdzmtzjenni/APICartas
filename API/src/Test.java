@@ -31,8 +31,7 @@ public class Test {
 			System.out.println(BlackJackGame.playerList.get(i).getP_hand());
 		}	
 		System.out.println(BlackJackGame.getPlayerList().toString());
-		System.out.println(BlackJackGame.pack.getPack());
-		System.out.println(BlackJackGame.pack.getPack().size());
+		
 		
 	}
 

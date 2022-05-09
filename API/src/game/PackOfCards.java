@@ -41,11 +41,11 @@ public class PackOfCards {
 		for(int i =1; i<5; i++) {
 			for(int j=1; j<14; j++) {
 				if (i>2) {
-					Card e = new Card(count++,suits.get(i-1),j, null,"Negra");
+					Card e = new Card(count++,suits.get(i-1),j, null,"Black");
 					pack.add(e);
 				}
 				else{
-					Card e = new Card(count++,suits.get(i-1),j, null,"Roja");
+					Card e = new Card(count++,suits.get(i-1),j, null,"Red");
 					pack.add(e);
 				}
 				

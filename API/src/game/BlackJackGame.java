@@ -108,16 +108,14 @@ public class BlackJackGame extends CardGame {
 		}
 
 		//Se reparten 2 cartas a cada jugador para empezar el juego
-		ArrayList<Card> hand = new ArrayList<>();
+		Card card;
 		for (int i = 0; i< playerList.size(); i++) {
 			for(int j=0; j<2; j++){
-				hand.add(pack.getPack().get(j));
+				card = pack.getPack().get(j);
+				playerList.get(i).p_hand.add(card);
 				pack.getPack().remove(j);
 			}
-			Player player = playerList.get(i);
-			player.setP_hand(hand);
 			System.out.println(playerList.get(i).getP_hand());
-			hand.removeAll(hand);
 		}
 
 		// System.out.println();
