@@ -9,17 +9,6 @@ public class IntelligentPlayer extends BlackJackPlayer {
 
 	}
 	
-	@Override
-	public void drawCard() {
-		
-
-	}
-
-	@Override
-	public void passTurn() {
-		// TODO Auto-generated method stub
-
-	}
 	
 	// Funcion que juega a Black Jack y determina si vale la pena seguir jugando o no dependiendo de sus cartas actuales 
 	
@@ -36,11 +25,6 @@ public class IntelligentPlayer extends BlackJackPlayer {
 		return false;
 	}
 
-	@Override
-	public void putCardInTrashPile() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 

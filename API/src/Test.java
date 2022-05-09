@@ -24,15 +24,10 @@ public class Test {
 		blackjack.addPlayer("Joseph",player6);
 		blackjack.addPlayer("Anna",BlackJackGame.createIntelligentPlayer());
 		blackjack.start();
-		System.out.println(BlackJackGame.playerList.size());
-		for (int i = 0; i < BlackJackGame.playerList.size(); i++) {
-			Player p = blackjack.nextPlayer();
-			List<Card> cards = p.getP_hand();
-			System.out.println(BlackJackGame.playerList.get(i).getP_hand());
-		}	
-		System.out.println(BlackJackGame.getPlayerList().toString());
 		
-		
+
+		player6.play();	
+	
 	}
 
 }

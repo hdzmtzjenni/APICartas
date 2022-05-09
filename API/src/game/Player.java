@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Jennifer Hernandez,Gabriel Olvera
  */
 public abstract class Player {
-	public ArrayList<Card> p_hand = new ArrayList<>();
+	public  ArrayList<Card> p_hand = new ArrayList<>();
 	public String name;
 	public int turn =0;
 	public boolean handReady=false;
@@ -19,10 +19,38 @@ public abstract class Player {
 		setName(name);
 	}
 	
-	public abstract void drawCard();
-	public abstract void putCardInTrashPile();
-	public abstract void passTurn();
+	public void drawCard(){
+		this.p_hand.add(BlackJackGame.pack.getPack().get(0));
+		BlackJackGame.pack.getPack().remove(0);
+	}
+	public  void putCardInTrashPile(){
 
+	}
+	public  void passTurn(){
+		this.handReady=true;
+		this.turn++;
+	}
+
+	public int sumOfHand(){
+		int value=0;
+		boolean as= false;
+		
+		for ( int i = 0; i < p_hand.size(); i++ ) {
+			int cardValue = p_hand.get(i).number;
+			if (cardValue > 10) {
+				cardValue = 10;
+			}
+			if (cardValue == 1) {
+				as = true;
+			}
+			value +=cardValue;
+		}
+
+		/* El as vale 1 al principio, pero si al cambiar su valor por 11 el resultado es igual a 21 o menor se cambia*/
+		if ( as == true && value + 10 <= 21 )
+			value = value + 10;
+		return value;
+	}
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
 	}
