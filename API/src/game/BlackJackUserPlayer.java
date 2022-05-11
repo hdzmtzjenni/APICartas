@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class BlackJackUserPlayer extends BlackJackPlayer{
 
 	@Override
-	public Boolean play() {
+	public void play() {
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name);
 
 		while (!handReady) {//Mientras el jugador no termine su turno
@@ -23,7 +23,7 @@ public class BlackJackUserPlayer extends BlackJackPlayer{
 				System.out.printf("Tiene más de 21, %s pierde ",this.name);
 				this.handReady=true;
 				this.turn++;
-				return false;
+		
 			}
 			
 			//El jugador decide si agarra otra carta o si se queda y acaba su turno
@@ -41,6 +41,5 @@ public class BlackJackUserPlayer extends BlackJackPlayer{
 				break;
 			} 
 		}
-		return true;
 	}
 }

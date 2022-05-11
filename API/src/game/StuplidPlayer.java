@@ -6,10 +6,9 @@ public class StuplidPlayer extends BlackJackPlayer{
     
 
 	@Override
-	public Boolean play() {
+	public void play() {
 		// TODO Auto-generated method stub
 		
-		return false;
 		
 	}
 

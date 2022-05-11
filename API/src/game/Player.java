@@ -54,7 +54,7 @@ public abstract class Player {
 		return this.name;
 	}
 	
-	public abstract Boolean play(); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
+	public abstract void play(); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
 	
 
 	public boolean sameSuit() {
