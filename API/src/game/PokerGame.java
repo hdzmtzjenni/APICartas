@@ -13,20 +13,14 @@ public class PokerGame extends CardGame{
     }
 
     @Override
-    public boolean checkEndOfRounds(ArrayList<Player> players) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public Player getWinner() {
+    public ArrayList<Player> getWinner() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public void addPlayer(String name, Player player) {
-        if(player instanceof PokerPlayer || player instanceof UserPlayer) {
+        if(player instanceof PokerPlayer  ) {
 			playerList.add(player);
 		}
 		else System.out.printf("Este player no sabe jugar Poker ");
@@ -58,6 +52,12 @@ public class PokerGame extends CardGame{
 		IndexNextPlayer++;
 
 		return next;
+    }
+
+    @Override
+    public boolean endGame() {
+        // TODO Auto-generated method stub
+        return false;
     }
     
     

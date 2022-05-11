@@ -7,7 +7,7 @@ package game;
 public class Card implements Comparable<Card>{
 //	Atributos
 	protected Suits suit;
-	protected int number;
+	protected int value;
 	protected int id;
 	protected String image;
 	protected  String  color;
@@ -19,14 +19,13 @@ public class Card implements Comparable<Card>{
 	 * @param number es el numero que identifica a la carta
 	 * @param image es la dirección para la imagen de cada carta
 	 */
-	public Card(int id, Suits suit, int number,String image,String color) {
+	public Card(int id, Suits suit, int value,String image,String color) {
 		setSuit(suit);
-		setNumber(number);
+		setValue(value);
 		setId(id);
 		setImage(image);
 		setColor(color);
 	}
-
 
 
     /*
@@ -40,8 +39,8 @@ public class Card implements Comparable<Card>{
 	 * Metodo que actualiza el valor del atributo number
 	 * @param number es el nuevo valor que tendra el atributo number
 	 */
-	public void setNumber(int number) {
-		this.number = number;
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	/*
@@ -81,10 +80,28 @@ public class Card implements Comparable<Card>{
 	 * Metodo que devuelve el numero de la carta
 	 * @return el numero de la carta
 	 */
-	public int getNumber() {
-		return number;
+	public int getValue() {
+		return value;
 	}
 
+	public String getValueString() {
+		switch (value) {
+		case 1: return "As";
+		case 2: return "2";
+		case 3: return "3";
+		case 4: return "4";
+		case 5: return "5";
+		case 6: return "6";
+		case 7: return "7";
+		case 8: return "8";
+		case 9: return "9";
+		case 10: return "10";
+		case 11: return "J";
+		case 12: return "Q";
+		case 13: return "K";
+		default: return "??";
+		}
+	}
 	/*
 	 * Metodo que devuelve el identificador de la carta
 	 * @return el identifiador de la carta
@@ -103,13 +120,13 @@ public class Card implements Comparable<Card>{
 
 	@Override
 	public String toString() {
-		return "|N" + number + "|"+suit + "|"+color;
+		return  getValueString() + "|"+suit + "|"+color;
 	}
 
 	@Override
 	public int compareTo(Card o) {
-		if(this.number == o.number) return 0;
-		if(this.number< o.number) return -1;
+		if(this.value == o.value) return 0;
+		if(this.value< o.value) return -1;
 		return 1;
 	}
 	
