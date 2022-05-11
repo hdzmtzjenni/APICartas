@@ -18,7 +18,7 @@ public class IntelligentPlayer extends BlackJackPlayer {
 		
 		
 		for(  Card c : this.p_hand) {
-			cardSumInHand += c.getNumber();
+			cardSumInHand += c.getValue();
 			
 		}
 		

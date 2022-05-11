@@ -51,6 +51,7 @@ public abstract class Player {
 			value = value + 10;
 		return value;
 	}
+	
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
 	}

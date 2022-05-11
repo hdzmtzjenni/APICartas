@@ -59,6 +59,18 @@ public class PokerGame extends CardGame{
         // TODO Auto-generated method stub
         return false;
     }
+
+    @Override
+    public boolean checkEndOfRounds(ArrayList<Player> players) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void playGame() {
+        // TODO Auto-generated method stub
+        
+    }
     
     
 }

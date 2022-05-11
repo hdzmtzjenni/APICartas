@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jenniferh
@@ -138,38 +139,49 @@ public class BlackJackGame extends CardGame {
 		}
 	}
 
-	// @Override
-	// public boolean checkEndOfRounds(ArrayList<Player> players) {
-	// 	int allReady = 0;
-	// 	for (Player p : players ) {
-	// 		if (p.handReady == true) {
-	// 			allReady ++;
-	// 		}
-	// 		if (allReady == players.size()) {
-	// 			return true; // debemos terminar la ronda
-	// 		}
+	@Override
+	public boolean checkEndOfRounds(ArrayList<Player> players) {
+		int allReady = 0;
+		for (Player p : players ) {
+			if (p.handReady == true) {
+				allReady ++;
+			}
+			if (allReady == players.size()) {
+				return true; // debemos terminar la ronda
+			}
 			
-	// 	}
-	// 	return false; // aun no se termina la ronda 
-	// }
+		}
+		return false; // aun no se termina la ronda 
+	}
 
-	// public void playBlackJack() {
-	// 	stillPlaying.clear();
-	// 	stillPlaying.addAll(playerList);
-	// 	Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador
-	// 	while (!checkEndOfRounds(stillPlaying)) {
-	// 		Boolean probableWinner = p.play(); // Todos los jugadores juegan con las cartas que se les dio, 
-	// 		if(probableWinner == false ) {
-	// 			stillPlaying.remove(p);
-	// 		}
-	// 	}
+	public void playBlackJack() {
+		stillPlaying.clear();
+		stillPlaying.addAll(playerList);
+		Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador
+		while (!checkEndOfRounds(stillPlaying)) {
+			Boolean probableWinner = p.play(); // Todos los jugadores juegan con las cartas que se les dio, 
+			if(probableWinner == false ) {
+				stillPlaying.remove(p);
+			}
+		}
 		
-	// 	for (Player player :stillPlaying) {
+		for (Player player :stillPlaying) {
 			
 			
-	// 	}
+		}
 		
-	// }
+	}
+
+	@Override
+	public void playGame() {
+		while(!endGame()) {
+			Player p = nextPlayer();// John, Mary, Joseph, Anna, John, Mary, ...
+			p.play();
+			List<Card> cards = p.getP_hand();
+			System.out.println(cards);
+		}
+		
+	}
 
 	
 	

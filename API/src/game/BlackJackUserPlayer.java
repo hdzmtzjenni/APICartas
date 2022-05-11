@@ -27,7 +27,7 @@ public class BlackJackUserPlayer extends BlackJackPlayer{
 			}
 			
 			//El jugador decide si agarra otra carta o si se queda y acaba su turno
-			String action = JOptionPane.showInputDialog("Stand(S) -- Draw a card(D):","Jugador");
+			String action = JOptionPane.showInputDialog("Stand(S) -- Draw a card(D):");
 			action = action.toUpperCase();
 			char action1 = action.charAt(0);
 			while (action1!= 'D' && action1!='S') {
