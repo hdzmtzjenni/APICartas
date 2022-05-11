@@ -31,26 +31,7 @@ public abstract class Player {
 		this.turn++;
 	}
 
-	public int sumOfHand(){
-		int value=0;
-		boolean as= false;
-		
-		for ( int i = 0; i < p_hand.size(); i++ ) {
-			int cardValue = p_hand.get(i).value;
-			if (cardValue > 10) {
-				cardValue = 10;
-			}
-			if (cardValue == 1) {
-				as = true;
-			}
-			value +=cardValue;
-		}
-
-		/* El as vale 1 al principio, pero si al cambiar su valor por 11 el resultado es igual a 21 o menor se cambia*/
-		if ( as == true && value + 10 <= 21 )
-			value = value + 10;
-		return value;
-	}
+	public abstract int sumOfHand();
 	
 	public ArrayList<Card> getP_hand() {
 		return p_hand;
