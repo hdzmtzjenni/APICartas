@@ -76,7 +76,19 @@ public abstract class Player {
 	public abstract Boolean play(); // Juega de acuerdo al juego y devuelve true o false dependiendo si sigue jugando 
 	
 
-
+	public boolean sameSuit() {
+		int flag = 0;
+		Suits suit = p_hand.get(turn).getSuit();
+		for (Card c: p_hand) {
+			if(c.getSuit()== suit) flag++;
+		}
+		if (flag == p_hand.size()) {
+			 return true;
+					 
+		} else {
+			return false;
+		}
+	}
 	
 	
 	
