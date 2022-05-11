@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class BlackJackGame extends CardGame {
 	public static PackOfCards pack;
 	protected int IndexNextPlayer=0;
-	public static ArrayList<Player> playerList = new ArrayList<>() ;
-	public static ArrayList<Player> stillPlaying = new ArrayList<>() ;
+	public static ArrayList<Player> playerList;
+	public static ArrayList<Player> stillPlaying ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
 	
@@ -19,6 +19,26 @@ public class BlackJackGame extends CardGame {
 	 * 
 	 */
 	public BlackJackGame(){
+		pack = new PackOfCards();
+		playerList = new ArrayList<>();
+		stillPlaying = new ArrayList<>();
+	}
+	
+	public static IntelligentPlayer createIntelligentPlayer() {
+		return new IntelligentPlayer();
+	}
+	
+	public static StuplidPlayer createStuplidPlayer() {
+		return new StuplidPlayer();
+
+	}
+
+	public static ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	public static void setPlayerList(ArrayList<Player> playerList) {
+		BlackJackGame.playerList = playerList;
 	}
 
 	@Override
@@ -31,24 +51,6 @@ public class BlackJackGame extends CardGame {
 
 		return next;
 	}
-	
-	public static IntelligentPlayer createIntelligentPlayer() {
-		return new IntelligentPlayer();
-	}
-	
-	public static StuplidPlayer createStuplidPlayer() {
-		return new StuplidPlayer();
-
-	}
-
-	
-	public static ArrayList<Player> getPlayerList() {
-		return playerList;
-	}
-
-	public static void setPlayerList(ArrayList<Player> playerList) {
-		BlackJackGame.playerList = playerList;
-	}
 
 /**
  * Metodo que elimina a todos los jugadores
@@ -59,13 +61,13 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public boolean checkEndOfRounds(ArrayList<Player> players) {
+	public boolean endGame() {
 		int allReady = 0;
-		for (Player p : players ) {
+		for (Player p : playerList ) {
 			if (p.handReady == true) {
 				allReady ++;
 			}
-			if (allReady == players.size()) {
+			if (allReady == playerList.size()) {
 				return true; // debemos terminar la ronda
 			}
 			
@@ -74,13 +76,31 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public Player getWinner() { 
-		return null;
+	public ArrayList<Player> getWinner() { 
+		for (Player player : playerList) {
+			if (player.sumOfHand() <=21) {
+				stillPlaying.add(player);
+			}
+		}
+	
+		ArrayList<Player> winners = new ArrayList<>(); //20,18,19,18
+		int max=0;
+		for (Player player1: stillPlaying) {
+			if (player1.sumOfHand()>max) {
+				max = player1.sumOfHand();
+			}
+		}
+		for (Player player2 : stillPlaying) {
+			if (player2.sumOfHand()==max) {
+				winners.add(player2);
+			}
+		}
+		return winners;
 	}
 
 	@Override
 	public void addPlayer(String name, Player player) {
-		if(player instanceof BlackJackPlayer || player instanceof UserPlayer) {
+		if(player instanceof BlackJackPlayer  ) {
 			player.name= name;
 			playerList.add(player);
 		}
@@ -115,35 +135,43 @@ public class BlackJackGame extends CardGame {
 				playerList.get(i).p_hand.add(card);
 				pack.getPack().remove(j);
 			}
-			// System.out.println(playerList.get(i).getP_hand());
 		}
-
-		// System.out.println();
-		// System.out.println();
-		// Collections.sort(pack.getPack());
-		// System.out.println(pack.getPack().toString());
-		// System.out.println("\n size:"+pack.getPack().size());
-
 	}
+
+	// @Override
+	// public boolean checkEndOfRounds(ArrayList<Player> players) {
+	// 	int allReady = 0;
+	// 	for (Player p : players ) {
+	// 		if (p.handReady == true) {
+	// 			allReady ++;
+	// 		}
+	// 		if (allReady == players.size()) {
+	// 			return true; // debemos terminar la ronda
+	// 		}
+			
+	// 	}
+	// 	return false; // aun no se termina la ronda 
+	// }
+
+	// public void playBlackJack() {
+	// 	stillPlaying.clear();
+	// 	stillPlaying.addAll(playerList);
+	// 	Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador
+	// 	while (!checkEndOfRounds(stillPlaying)) {
+	// 		Boolean probableWinner = p.play(); // Todos los jugadores juegan con las cartas que se les dio, 
+	// 		if(probableWinner == false ) {
+	// 			stillPlaying.remove(p);
+	// 		}
+	// 	}
+		
+	// 	for (Player player :stillPlaying) {
+			
+			
+	// 	}
+		
+	// }
+
 	
-	public void playBlackJack() {
-		stillPlaying.clear();
-		stillPlaying.addAll(playerList);
-		Player p = stillPlaying.get(0); // Empezar a jugar con el primer jugador\
-		while (checkEndOfRounds(stillPlaying)) {
-			Boolean probableWinner = p.play(); // Todos los jugadores juegan con las cartas que se les dio, 
-			if(probableWinner == false ) {
-				stillPlaying.remove(p);
-			}
-		}
-		
-		for (Player player :stillPlaying) {
-			
-			
-		}
-		
-		
-	}
 	
 	
 

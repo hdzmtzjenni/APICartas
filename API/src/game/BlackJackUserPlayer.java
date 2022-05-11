@@ -2,18 +2,13 @@ package game;
 
 import javax.swing.JOptionPane;
 
-public class UserPlayer extends Player{
-    
-    
-	public UserPlayer() {
-	}
-	
+public class BlackJackUserPlayer extends BlackJackPlayer{
 
 	@Override
 	public Boolean play() {
-	
+		System.out.printf("\n\n----------------- Player %s -----------------",this.name);
+
 		while (!handReady) {//Mientras el jugador no termine su turno
-			System.out.printf("\nPlayer %s",this.name);
 			System.out.printf("\nHand: %d\n",this.sumOfHand());
 			System.out.println(this.getP_hand());
 		
@@ -25,14 +20,14 @@ public class UserPlayer extends Player{
 			}
 
 			if (this.sumOfHand()>21) {//Si la suma es más de 21 el jugador pierde y se acaba su turno
-				System.out.printf("Tiene más de 21, %s pierde",this.name);
+				System.out.printf("Tiene más de 21, %s pierde ",this.name);
 				this.handReady=true;
 				this.turn++;
 				return false;
 			}
 			
 			//El jugador decide si agarra otra carta o si se queda y acaba su turno
-			String action = JOptionPane.showInputDialog("Stand(S) -- Draw a card(D):");
+			String action = JOptionPane.showInputDialog("Stand(S) -- Draw a card(D):","Jugador");
 			action = action.toUpperCase();
 			char action1 = action.charAt(0);
 			while (action1!= 'D' && action1!='S') {
@@ -41,7 +36,7 @@ public class UserPlayer extends Player{
 			}
 			if(action1== 'D')drawCard();
 			else if(action1== 'S'){//Si se queda se pasa acaba su turno 
-				System.out.printf("%s Stand",this.name);
+				System.out.printf("%s Stand ",this.name);
 				passTurn();
 				break;
 			} 

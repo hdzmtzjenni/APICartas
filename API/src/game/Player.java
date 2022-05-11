@@ -36,7 +36,7 @@ public abstract class Player {
 		boolean as= false;
 		
 		for ( int i = 0; i < p_hand.size(); i++ ) {
-			int cardValue = p_hand.get(i).number;
+			int cardValue = p_hand.get(i).value;
 			if (cardValue > 10) {
 				cardValue = 10;
 			}
