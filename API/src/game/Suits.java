@@ -9,12 +9,12 @@ public enum Suits {
 	PIKES("pikes"),
 	CLUBS("clubs");
 	
-	private String nombre;
+	private String suit;
 	
-	private Suits(String nombre) {
-		this.nombre=nombre;
+	private Suits(String suit) {
+		this.suit=suit;
 	}
 	public String toString() {
-		return this.nombre;
+		return this.suit;
 	}
 }
