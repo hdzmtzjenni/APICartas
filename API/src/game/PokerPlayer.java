@@ -37,6 +37,18 @@ public class PokerPlayer extends Player {
 			if(c2.getValue() == (c1.getValue()+1)  && c3.getValue() == (c1.getValue()+2)  && c4.getValue() == (c1.getValue()+3)  && c5.getValue() == (c1.getValue()+4)) PR = PokerRanking.StraightFlush;
 		}
 		
+		// Four Of A Kind
+			if(c1.getValue() != c2.getValue()) {
+				if(c2.getValue() == c3.getValue() && c3.getValue() == c4.getValue() && c4.getValue() == c5.getValue()) PR = PokerRanking.FourOfAKind;
+			} else if (c1.getValue() == c2.getValue() && c2.getValue() == c3.getValue() && c3.getValue() == c4.getValue()) PR = PokerRanking.FourOfAKind;
+			
+		// Full House 
+	
+				
+		
+		
+		// 
+		
 		return 0;
 		
 		
