@@ -25,8 +25,12 @@ public class PokerPlayer extends Player {
 		c5 = p_hand.get(4);
 		
 		// Royal Flush 
+		if (this.sameSuit()) {
+			return 0;
+		}
 		
 		return 0;
+		
 	}
 	
 
