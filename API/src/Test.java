@@ -45,7 +45,6 @@ public class Test {
 		System.out.println(player6.getP_hand().toString());
 
 
-
 		// blackjack.playGame();
 			
 		// ArrayList<Player> winners = blackjack.getWinner();

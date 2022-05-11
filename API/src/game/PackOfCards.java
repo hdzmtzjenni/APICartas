@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class PackOfCards {
 // Atributos
-	ArrayList<Card> pack;
+	public ArrayList<Card> pack;
 	
 	/*
 	 * constructor de la clase PackOfCards
