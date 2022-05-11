@@ -1,12 +1,13 @@
 package game;
 
+import java.util.Collections;
 
 public class PokerPlayer extends Player {
 
 	@Override
 	public int sumOfHand() {
 		// TODO Auto-generated method stub
-
+		PokerRanking PR;
 		Card c1; 
 		Card c2;
 		Card c3;
@@ -15,6 +16,7 @@ public class PokerPlayer extends Player {
 	
 		//p_hand sort 
 		
+		Collections.sort(this.getP_hand());
 		
 		// card division
 		
@@ -26,10 +28,17 @@ public class PokerPlayer extends Player {
 		
 		// Royal Flush 
 		if (this.sameSuit()) {
-			return 0;
+			if(c1.getValue() == 1 && c2.getValue() == 10  && c3.getValue() == 11  && c4.getValue() == 12  && c5.getValue() == 13 ) PR = PokerRanking.RoyalFlush;
+	
+		}
+		
+		// Straight Flush 
+		if (this.sameSuit()) {
+			if(c2.getValue() == (c1.getValue()+1)  && c3.getValue() == (c1.getValue()+2)  && c4.getValue() == (c1.getValue()+3)  && c5.getValue() == (c1.getValue()+4)) PR = PokerRanking.StraightFlush;
 		}
 		
 		return 0;
+		
 		
 	}
 	

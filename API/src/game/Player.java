@@ -59,7 +59,7 @@ public abstract class Player {
 
 	public boolean sameSuit() {
 		int flag = 0;
-		Suits suit = p_hand.get(turn).getSuit();
+		Suits suit = p_hand.get(0).getSuit();
 		for (Card c: p_hand) {
 			if(c.getSuit()== suit) flag++;
 		}
