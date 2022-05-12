@@ -6,7 +6,6 @@ public class PokerPlayer extends Player {
 
 	@Override
 	public int sumOfHand() {
-		// TODO Auto-generated method stub
 		PokerRanking PR =PokerRanking.HighCard;
 		Card c1; 
 		Card c2;
@@ -15,11 +14,9 @@ public class PokerPlayer extends Player {
 		Card c5;
 	
 		//p_hand sort 
-		
 		Collections.sort(this.getP_hand());
 		
 		// card division
-		
 		c1 = p_hand.get(0);
 		c2 = p_hand.get(1);
 		c3 = p_hand.get(2);
@@ -55,11 +52,36 @@ public class PokerPlayer extends Player {
 		if(c2.getValue()== c1.getValue()+1 && c3.getValue()==c2.getValue()+1 && c4.getValue()==c3.getValue()+1 && c5.getValue() ==c4.getValue())
 			PR = PokerRanking.Straight;
 		
-		// 
+		// Three of a Kind
+		if(c1.getValue()==c2.getValue() && c2.getValue()==c3.getValue()){
+			PR = PokerRanking.ThreeOfAKind;
+		} else if(c2.getValue()==c3.getValue() && c3.getValue()==c4.getValue()){
+			PR = PokerRanking.ThreeOfAKind;
+		} else if(c3.getValue()==c4.getValue() && c4.getValue()==c5.getValue())
+			PR = PokerRanking.ThreeOfAKind;
+
+
+		//Two Pair
+		if(c1.getValue()!= c2.getValue()){
+			if(c2.getValue()==c3.getValue()){
+				if(c4.getValue()==c5.getValue()) PR = PokerRanking.TwoPair;
+			}	
+		}else if(c1.getValue()== c2.getValue()) {
+			if (c3.getValue()!=c4.getValue()) {
+				if(c4.getValue() ==c5.getValue())  PR = PokerRanking.TwoPair;
+			}else if(c3.getValue() == c4.getValue())PR = PokerRanking.TwoPair;
+		}
 		
+		//Pair
+		if(c1.getValue()!= c2.getValue()){
+			if(c2.getValue()!=c3.getValue()){
+				if(c3.getValue()!=c4.getValue()){
+					if(c4.getValue()== c5.getValue()) PR = PokerRanking.OnePair;
+				}else if(c3.getValue()==c4.getValue()) PR = PokerRanking.OnePair;
+			}else if(c2.getValue()== c3.getValue()) PR = PokerRanking.OnePair;
+		}else if(c1.getValue()== c2.getValue())PR = PokerRanking.OnePair;
+
 		return PR.getRanking();
-		
-		
 	}
 	
 
