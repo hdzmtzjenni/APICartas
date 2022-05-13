@@ -60,7 +60,6 @@ public class PokerPlayer extends Player {
 		} else if(c3.getValue()==c4.getValue() && c4.getValue()==c5.getValue())
 			PR = PokerRanking.ThreeOfAKind;
 
-
 		//Two Pair
 		if(c1.getValue()!= c2.getValue()){
 			if(c2.getValue()==c3.getValue()){

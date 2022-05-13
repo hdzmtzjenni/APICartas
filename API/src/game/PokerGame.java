@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=0;
-    
+    public PackOfCards pack;
     public static ArrayList<Player> playerList = new ArrayList<>() ;
     public static ArrayList<Card> inTable = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
@@ -12,6 +12,23 @@ public class PokerGame extends CardGame{
 
     public PokerGame(){
         
+    }
+
+    public static PokerSmartPlayer createSmartPlayer(){
+        return new PokerSmartPlayer();
+    }
+
+    public static PokerRandomPlayer createRandomPlayer(){
+        return new PokerRandomPlayer();
+    }
+    
+
+    public static ArrayList<Card> getInTable() {
+        return inTable;
+    }
+
+    public static void setInTable(ArrayList<Card> inTable) {
+        PokerGame.inTable = inTable;
     }
 
     @Override
@@ -28,6 +45,7 @@ public class PokerGame extends CardGame{
 		else System.out.printf("Este player no sabe jugar Poker ");
 		
     }
+    
     @Override
     public void removePlayer(String name) {
         for (int i = 0; i<playerList.size();i++) {
@@ -35,9 +53,38 @@ public class PokerGame extends CardGame{
 			if(player.name == name) playerList.remove(i);
 		}
     }
+
     @Override
     public void start() {
-        // TODO Auto-generated method stub
+        //Se inicializan todas las variables de los jugadores y de la baraja
+        pack = new PackOfCards();
+		pack.startPack();
+		pack.sortCards();
+		this.IndexNextPlayer=0;
+
+		for (Player player : playerList) {
+			player.p_hand.removeAll(player.p_hand);
+            player.turn=0;
+            player.handReady=false;
+		}
+
+		//Se reparten 5 cartas a cada jugador para empezar el juego
+		Card card;
+		for (int i = 0; i< playerList.size(); i++) {
+			for(int j=0; j<5; j++){
+				card = pack.getPack().get(j);
+				playerList.get(i).p_hand.add(card);
+				pack.getPack().remove(j);
+			}
+		}
+
+        //Se agregan 5 cartas a la mesa
+        Card card1;
+		for(int j=0; j<5; j++){
+			card1 = pack.getPack().get(j);
+            inTable.add(card1);
+			pack.getPack().remove(j);
+		}
         
     }
     @Override
