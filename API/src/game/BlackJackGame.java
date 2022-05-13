@@ -3,6 +3,8 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.paint.Stop;
+
 /**
  * @author jenniferh
  * 
@@ -28,7 +30,6 @@ public class BlackJackGame extends CardGame {
 	public static IntelligentPlayer createIntelligentPlayer() {
 		return new IntelligentPlayer();
 	}
-	
 	public static StuplidPlayer createStuplidPlayer() {
 		return new StuplidPlayer();
 
@@ -37,9 +38,20 @@ public class BlackJackGame extends CardGame {
 	public static ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
-
 	public static void setPlayerList(ArrayList<Player> playerList) {
 		BlackJackGame.playerList = playerList;
+	}
+	public int getIndexNextPlayer() {
+		return IndexNextPlayer;
+	}
+	public void setIndexNextPlayer(int indexNextPlayer) {
+		IndexNextPlayer = indexNextPlayer;
+	}
+	public static ArrayList<Player> getStillPlaying() {
+		return stillPlaying;
+	}
+	public static void setStillPlaying(ArrayList<Player> stillPlaying) {
+		BlackJackGame.stillPlaying = stillPlaying;
 	}
 
 	@Override
@@ -106,8 +118,6 @@ public class BlackJackGame extends CardGame {
 			playerList.add(player);
 		}
 		else System.out.printf("Este jugador no sabe jugar BlackJack ");
-		
-
 	}
 
 	@Override
@@ -120,12 +130,17 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public void start() {
+		System.out.println("\n==================== BLACK JACK GAME ====================");
 		// Se inicializan los arreglos y se bajarean las cartas
 		pack = new PackOfCards();
 		pack.startPack();
 		pack.sortCards();
+		this.IndexNextPlayer=0;
+		stillPlaying.removeAll(stillPlaying);
 		for (Player player : playerList) {
 			player.p_hand.removeAll(player.p_hand);
+            player.turn=0;
+            player.handReady=false;
 		}
 
 		//Se reparten 2 cartas a cada jugador para empezar el juego

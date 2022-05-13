@@ -23,7 +23,7 @@ public class BlackJackUserPlayer extends BlackJackPlayer{
 				System.out.printf("Tiene más de 21, %s pierde ",this.name);
 				this.handReady=true;
 				this.turn++;
-		
+				break;
 			}
 			
 			//El jugador decide si agarra otra carta o si se queda y acaba su turno

@@ -26,31 +26,26 @@ public class Test {
 		Player player9 = new BlackJackUserPlayer();
 	
 
-		blackjack.addPlayer("Gabo",player6);
+		blackjack.addPlayer("Dani",player6);
 		blackjack.addPlayer("Jenni",player7);
 		blackjack.addPlayer("Joseph",player8);
 		blackjack.addPlayer("Anna",player9);
 		blackjack.start();
 
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		player6.drawCard();
-		System.out.println(player6.getP_hand().toString());
-		Collections.sort(player6.getP_hand());
-		System.out.println(player6.getP_hand().toString());
-
-
-		// blackjack.playGame();
+		blackjack.playGame();
 			
-		// ArrayList<Player> winners = blackjack.getWinner();
-		// System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+		ArrayList<Player> winners = blackjack.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+		
 			 	
+		//Volvamos a jugar Blackjack con los mismos jugadores
+		blackjack.start();// vuelve a revolver y repartir, el estatus de cada jugador se reinicia
+		blackjack.playGame();
+			
+		winners = blackjack.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+
+		
 		
 	}
-
 }
