@@ -8,14 +8,12 @@ public class PokerGame extends CardGame{
     public static boolean falg=false;
     public PackOfCards pack;
     public static ArrayList<Player> playerList ;
-    public static ArrayList<Player> stillPlaying;
     public static ArrayList<Card> inTable = new ArrayList<>() ;
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
 
     public PokerGame(){
         playerList = new ArrayList<>();
-        stillPlaying = new ArrayList<>();
     }
 
     public static PokerSmartPlayer createSmartPlayer(){
@@ -89,8 +87,6 @@ public class PokerGame extends CardGame{
 		pack.startPack();
 		pack.sortCards();
 		this.IndexNextPlayer=-1;
-        stillPlaying.addAll(playerList);
-        System.out.println(stillPlaying);
 
 		for (Player player : playerList) {
 			player.p_hand.removeAll(player.p_hand);
@@ -125,10 +121,10 @@ public class PokerGame extends CardGame{
     @Override
     public Player nextPlayer() {
         IndexNextPlayer++;
-        if(IndexNextPlayer==stillPlaying.size()) { 
+        if(IndexNextPlayer==playerList.size()) { 
             this.IndexNextPlayer=0; 
         } 
-		Player next = stillPlaying.get(IndexNextPlayer);
+		Player next = playerList.get(IndexNextPlayer);
 
 		return next;
     }
@@ -150,41 +146,28 @@ public class PokerGame extends CardGame{
 
     @Override
     public void playGame() {
-
+        //El juego corre mientras endGame no se cumpla
         while(!endGame()) {
-            System.out.printf("\nI: %d",IndexNextPlayer);
-            
-			Player p = nextPlayer();// John, Mary, Joseph, Anna, John, Mary, ...
-            System.out.printf("\nI: %d",IndexNextPlayer);
-
+			Player p = nextPlayer();
             p.play();
-            System.out.printf("\nI: %d",IndexNextPlayer);
 			List<Card> cards = p.getP_hand();
 			System.out.println(cards);
+
+            // Si el jugador quiso levantar la mano para terminar la jugada, se realiza el último turno de todos
             if(p.handReady){
                 System.out.println("\n####### ULTIMA RONDA #######");
-                Player p1=nextPlayer();// John, Mary, Joseph, Anna, John, Mary, ...
+                Player p1=nextPlayer();
+
+                //Mientras que el player sea diferente al que quiso terminar se corre el ciclo
+                //Ya que el que termina el juego no vuelve a jugar
                 while (p1!=p) {
                     p1.play();
                     cards = p1.getP_hand();
 			        System.out.println(cards);
                     p1.handReady=true;
                     p1 = nextPlayer();
-                }
-                
-                // stillPlaying.remove(IndexNextPlayer);
-                // System.out.println(stillPlaying);
-                // for (Player player: stillPlaying) {
-                //     player.play();
-                //     List<Card> cards = player.getP_hand();
-			    //     System.out.println(cards);
-                //     player.handReady=true;
-                // }
+                } 
             }
-            
-            
-
-            
 		}
     }
 
