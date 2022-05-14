@@ -70,6 +70,7 @@ public abstract class Player {
 			return false;
 		}
 	}
+
 	
 	
 	

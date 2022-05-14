@@ -3,13 +3,14 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.paint.Stop;
 
-/**
- * @author jenniferh
+/*
  * 
+ * @author Jennifer Hernandez,Gabriel Olvera
  *
  */
+
+
 public class BlackJackGame extends CardGame {
 	public static PackOfCards pack;
 	protected int IndexNextPlayer=0;
@@ -18,15 +19,19 @@ public class BlackJackGame extends CardGame {
 	public static final int MAX_PLAYERS= 5;
 	public static final int MIN_PLAYERS= 2;
 	
-	/**
-	 * 
+	/*
+	 *  Constructor de la clase BlackJackGame
 	 */
 	public BlackJackGame(){
 		pack = new PackOfCards();
 		playerList = new ArrayList<>();
 		stillPlaying = new ArrayList<>();
 	}
-	
+
+	/*
+	 *  Método staic que crea un jugador del tipo IntelligentPlayer
+	 * @return un jugador IntelligentPlayer
+	 */
 	public static IntelligentPlayer createIntelligentPlayer() {
 		return new IntelligentPlayer();
 	}

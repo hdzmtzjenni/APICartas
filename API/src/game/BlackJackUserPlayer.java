@@ -31,7 +31,7 @@ public class BlackJackUserPlayer extends BlackJackPlayer{
 			action = action.toUpperCase();
 			char action1 = action.charAt(0);
 			while (action1!= 'D' && action1!='S') {
-				System.out.println("Invalid Option");
+				JOptionPane.showMessageDialog(null, "Error", "Invalid Option", JOptionPane.WARNING_MESSAGE);
 				action = JOptionPane.showInputDialog("Stand(S) -- Draw a card(D)");
 			}
 			if(action1== 'D')drawCard();

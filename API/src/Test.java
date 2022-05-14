@@ -26,10 +26,10 @@ public class Test {
 		Player player9 = new BlackJackUserPlayer();
 	
 
-		blackjack.addPlayer("Dani",player6);
+		blackjack.addPlayer("Dani",player4);
 		blackjack.addPlayer("Jenni",player7);
 		blackjack.addPlayer("Joseph",player8);
-		blackjack.addPlayer("Anna",player9);
+		blackjack.addPlayer("Anna",player5);
 		blackjack.start();
 
 		blackjack.playGame();
