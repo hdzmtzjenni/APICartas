@@ -7,8 +7,8 @@ public class TestPoker {
     public static void main(String[] args) {
         CardGame poker = new PokerGame();
 
-        Player player1 = PokerGame.createSmartPlayer();
-        Player player2 = PokerGame.createRandomPlayer();
+        Player player1 = new PokerUserPlayer();
+        Player player2 = new PokerUserPlayer();
         Player player3 = new PokerUserPlayer();
         
         poker.addPlayer("Juan",player1);
@@ -16,6 +16,7 @@ public class TestPoker {
         poker.addPlayer("Jose",player3);
 
         poker.start();// revuelve cartas, reparte cartas  
+        poker.playGame();
         
     }
 }
