@@ -1,11 +1,11 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=-1;
-    public static boolean falg=false;
     public PackOfCards pack;
     public static ArrayList<Player> playerList ;
     public static ArrayList<Card> inTable = new ArrayList<>() ;
@@ -44,19 +44,44 @@ public class PokerGame extends CardGame{
 
     @Override
     public ArrayList<Player> getWinner() {
-        ArrayList<Player> winners = new ArrayList<>(); //20,18,19,18
+        ArrayList<Player> stillPlaying = new ArrayList<>();
 		int max=0;
+        //Se calcula la mano más alta
 		for (Player player1: playerList) {
+            System.out.printf("\nPlayer %s has: %d",player1.name,player1.sumOfHand());
 			if (player1.sumOfHand()>max) {
 				max = player1.sumOfHand();
 			}
 		}
+
+        //Si dos jugadores tienen la misma mano se añaden a StillPlaying
 		for (Player player2 : playerList) {
 			if (player2.sumOfHand()==max) {
-				winners.add(player2);
+				stillPlaying.add(player2);
 			}
 		}
-        return null;
+        ArrayList<Player> winners = new ArrayList<>(); 
+
+        //Se evalua si son más de un jugador los que tienen la misma mano
+        if(stillPlaying.size()>1){
+            max= 0;
+            //Si son más de un jugador se evalua dentro de su mano la mayor carta
+            for (Player player : stillPlaying) {
+                if (player.maxPlayableValue>max) {
+                    max=player.maxPlayableValue;
+                }
+            }
+
+            //se agrega a winner el jugador o jugadores que tengan la carta más alta dentro de su mano
+            for (Player player2 : stillPlaying) {
+                if (player2.maxPlayableValue==max) {
+                    winners.add(player2);
+                }
+            }
+        }else{
+            winners = stillPlaying;
+        }
+        return winners;
     }
 
     @Override
@@ -151,11 +176,13 @@ public class PokerGame extends CardGame{
 			Player p = nextPlayer();
             p.play();
 			List<Card> cards = p.getP_hand();
+            Collections.sort(cards);
+
 			System.out.println(cards);
 
             // Si el jugador quiso levantar la mano para terminar la jugada, se realiza el último turno de todos
             if(p.handReady){
-                System.out.println("\n####### ULTIMA RONDA #######");
+                System.out.println("\n####### LAST ROUND #######");
                 Player p1=nextPlayer();
 
                 //Mientras que el player sea diferente al que quiso terminar se corre el ciclo

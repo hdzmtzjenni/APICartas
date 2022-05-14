@@ -11,6 +11,8 @@ public abstract class Player {
 	public String name;
 	public int turn =0;
 	public boolean handReady=false;
+	public int maxPlayableValue= 0;
+
 	
 	public Player(){
 		

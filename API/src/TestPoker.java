@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import game.CardGame;
 import game.Player;
 import game.PokerGame;
@@ -17,6 +19,8 @@ public class TestPoker {
 
         poker.start();// revuelve cartas, reparte cartas  
         poker.playGame();
+        ArrayList<Player> winners = poker.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
         
     }
 }
