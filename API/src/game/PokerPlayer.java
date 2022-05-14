@@ -3,6 +3,7 @@ package game;
 import java.util.Collections;
 
 public class PokerPlayer extends Player {
+	public int maxPlayableValue= 0;
 
 	@Override
 	public int sumOfHand() {
