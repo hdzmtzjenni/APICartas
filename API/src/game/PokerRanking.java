@@ -19,6 +19,10 @@ public enum PokerRanking {
     }
     public int getRanking() {
         return this.ranking;
-    }    
+    } 
+    
+    public String toString() {
+    	return this.name();
+    }
     
 }

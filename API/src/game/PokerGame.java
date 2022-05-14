@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import game.PokerRanking;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,6 +42,38 @@ public class PokerGame extends CardGame{
     public void setIndexNextPlayer(int indexNextPlayer) {
         IndexNextPlayer = indexNextPlayer;
     }
+    
+    public PokerRanking getRankingFromInt( int ranking) {
+    		
+    	PokerRanking PR;
+    	
+    	 switch (ranking) {
+         case 1:  PR = PokerRanking.HighCard;
+                  break;
+         case 2:  PR = PokerRanking.OnePair;
+                  break;
+         case 3:  PR = PokerRanking.TwoPair;
+                  break;
+         case 4:  PR = PokerRanking.ThreeOfAKind;
+                  break;
+         case 5:  PR = PokerRanking.Straight;
+                  break;
+         case 6:  PR = PokerRanking.Flush;
+                  break;
+         case 7:  PR = PokerRanking.FullHouse;
+                  break;
+         case 8:  PR = PokerRanking.FourOfAKind;
+                  break;
+         case 9:  PR = PokerRanking.StraightFlush;
+                  break;
+         case 10: PR = PokerRanking.RoyalFlush;
+                  break;
+         default: PR = PokerRanking.HighCard;
+                  break;
+     }
+    	 
+    	 return PR;
+    }
 
     @Override
     public ArrayList<Player> getWinner() {
@@ -48,7 +81,8 @@ public class PokerGame extends CardGame{
 		int max=0;
         //Se calcula la mano más alta
 		for (Player player1: playerList) {
-            System.out.printf("\nPlayer %s has: %d",player1.name,player1.sumOfHand());
+			PokerRanking PR = getRankingFromInt(player1.sumOfHand());
+            System.out.printf("\nPlayer %s has: %s of %d ",player1.name, PR.toString(),player1.maxPlayableValue);
 			if (player1.sumOfHand()>max) {
 				max = player1.sumOfHand();
 			}
