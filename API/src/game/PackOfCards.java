@@ -2,24 +2,24 @@ package game;
 import java.util.ArrayList;
 
 /*
- * Esta clase define una baraja de cartas
+ * Pack Of Cards is a class that is used to start the game and to keep control that the cards are never repeated 
  * @author Jennifer Hernandez,Gabriel Olvera
  */
 public class PackOfCards {
 // Atributos
-	public ArrayList<Card> pack;
+	public ArrayList<Card> pack; // Pack of cards 
 	
 	/*
-	 * constructor de la clase PackOfCards
-	 * Inicializa el ArrayList de la baraja
+	 * constructor of class
+	 * Initializes de pack 
 	 */
 	public PackOfCards() {
 		pack = new ArrayList<>();
 	}
 
 	/*
-	 * Metodo que devuelve el arreglo de la baraja
-	 * @return el arreglo de la baraja
+	 * Method that returns the pack of Class
+	 * @returns the pack 
 	 */
 	public ArrayList<Card> getPack() {
 		return pack;
@@ -30,7 +30,7 @@ public class PackOfCards {
 	}
 	
 	/*
-	 * Metodo que asigna las 52 cartas al arreglo de la baraja 
+	 * Method that assing the 52 cards to the pack 
 	 */
 	public void startPack() {
 		ArrayList<Suits> suits = new ArrayList<>();
@@ -54,7 +54,7 @@ public class PackOfCards {
 	}
 	
 	/*
-	 * Metodo que revuelve la baraja
+	 * Method that returns the pack 
 	 */
 	public void sortCards() {
 		int length =this.pack.size();
