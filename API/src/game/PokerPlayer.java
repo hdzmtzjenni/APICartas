@@ -2,25 +2,22 @@ package game;
 
 import java.util.Collections;
 
+// PokerPlayer is the subclass of Player that has the right functions to play Poker. This is the only subclass of player that can be included into a PokerGame. 
+
 public class PokerPlayer extends Player {
 
 	@Override
-	public int sumOfHand() {
-		PokerRanking PR =PokerRanking.HighCard;
-		Card c1; 
-		Card c2;
-		Card c3;
-		Card c4;
-		Card c5;
-	
+	public int sumOfHand() { // Function that returns the value based on PokerRanking of your hand 
+		PokerRanking PR =PokerRanking.HighCard; // Create Instance of enum to save the value of Hand
+		
 		//p_hand sort 
-		Collections.sort(this.getP_hand());
-		// card division
-		c1 = p_hand.get(0);
-		c2 = p_hand.get(1);
-		c3 = p_hand.get(2);
-		c4 = p_hand.get(3);
-		c5 = p_hand.get(4);
+		Collections.sort(this.getP_hand());  // SortCards using genericMethod thanks to the implementation of Comparable in Card Class 
+		// card division in order 
+		Card c1 = p_hand.get(0); // Lowest Card in Hand 
+		Card c2 = p_hand.get(1);
+		Card c3 = p_hand.get(2);
+		Card c4 = p_hand.get(3);
+		Card c5 = p_hand.get(4); // Highest Card in Hand
 		
 		// default value of MaxPlayableValue
 		this.maxPlayableValue = c5.getValue();
@@ -164,12 +161,12 @@ public class PokerPlayer extends Player {
 		
 		
 
-		return PR.getRanking();
+		return PR.getRanking(); // Return the int value of the enum 
 		
 	}
 
-	@Override
-	public void play() {
+	@Override           
+	public void play() { // Do to abstract method implemented in Player, Play is a needed function although it is not used, it is used by subclass of PokerPlayer
 		// TODO Auto-generated method stub
 		
 	}

@@ -81,7 +81,7 @@ public class PokerUserPlayer extends PokerPlayer{
                 this.turn++;
                 break;
             }
-			else if(action1== 'H'){//Si se queda se pasa acaba su turno 
+			else if(action1== 'H'){//if the choice is H, the turn ends 
 				System.out.printf("%s Stand ",this.name);
 				passTurn();
 				break;
