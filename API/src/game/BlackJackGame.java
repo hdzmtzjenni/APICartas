@@ -5,6 +5,7 @@ import java.util.List;
 
 import game.exception.NoPlayersException;
 import game.exception.NullException;
+import game.exception.SameNameException;
 
 
 /*
@@ -123,14 +124,18 @@ public class BlackJackGame extends CardGame {
 	public void addPlayer(String name, Player player){
 		try {
 			tryAddPlayer(name, player);
-		
 		} catch (NullException e) {
 			e.printStackTrace();
-		}
+		} catch (SameNameException e) {
+            e.printStackTrace();
+        }
 	}
 
-	public void tryAddPlayer(String name, Player player) throws NullException{
+	public void tryAddPlayer(String name, Player player) throws NullException, SameNameException{
 		if (player == null) throw new NullException();
+		for (Player player1 : playerList) {
+            if(player1.name == name) throw new SameNameException(name);
+        }
 		if(player instanceof BlackJackPlayer  ) {
 			player.name= name;
 			playerList.add(player);
@@ -139,7 +144,6 @@ public class BlackJackGame extends CardGame {
 	}
 
 	
-
 	@Override
 	public void removePlayer(String name) {
 		for (int i = 0; i<playerList.size();i++) {
@@ -149,7 +153,7 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public void start() throws NoPlayersException {
+	public void start() {
 		System.out.println("\n==================== BLACK JACK GAME ====================");
 		// Se inicializan los arreglos y se bajarean las cartas
 		pack = new PackOfCards();
@@ -162,7 +166,15 @@ public class BlackJackGame extends CardGame {
             player.turn=0;
             player.handReady=false;
 		}
+		try {
+			tryStart();
+		} catch (NoPlayersException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
+	public void tryStart() throws NoPlayersException{
 		if (playerList.size()< MIN_PLAYERS) throw new NoPlayersException();
 		//Se reparten 2 cartas a cada jugador para empezar el juego
 		Card card;

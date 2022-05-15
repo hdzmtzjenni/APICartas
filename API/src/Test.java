@@ -24,28 +24,17 @@ public class Test {
 
 		blackjack.addPlayer("Dani",player4);
 		blackjack.addPlayer("Jenni",player7);
-		blackjack.addPlayer("Joseph",player8);
+		blackjack.addPlayer("Jenni",player8);
 		blackjack.addPlayer("Anna",null);
 		
-		try {
-			blackjack.start();
-			
-		
-		} catch (NoPlayersException e) {
-			e.printStackTrace();
-		}
-
+		blackjack.start();
 		blackjack.playGame();
 			
-			ArrayList<Player> winners = blackjack.getWinner();
-			System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+		ArrayList<Player> winners = blackjack.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
 			 	
 		//Volvamos a jugar Blackjack con los mismos jugadores
-		try {
-			blackjack.start();// vuelve a revolver y repartir, el estatus de cada jugador se reinicia
-		} catch (NoPlayersException e) {
-			e.printStackTrace();
-		}
+		blackjack.start();// vuelve a revolver y repartir, el estatus de cada jugador se reinicia
 		blackjack.playGame();
 			
 		winners = blackjack.getWinner();

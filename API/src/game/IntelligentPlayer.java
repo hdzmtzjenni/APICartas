@@ -35,7 +35,7 @@ public class IntelligentPlayer extends BlackJackPlayer {
 			//Hay un 80% de probabilidad de que el jugador agarre una carta
 			if(this.sumOfHand()<=11) drawCard();
 			if(this.sumOfHand()==12){
-				if (getRandomValue<=80) {
+				if (getRandomValue<=90) {
 					drawCard();
 				}else{
 					passTurn();
