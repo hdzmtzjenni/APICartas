@@ -23,8 +23,8 @@ public class PokerGame extends CardGame{
         playerList = new ArrayList<>();
     }
 
-    public static PokerSmartPlayer createSmartPlayer(){ // Function that returns an instance of PokerSmartPlayer
-        return new PokerSmartPlayer();
+    public static PokerPairPlayer createPairPlayer(){ // Function that returns an instance of PokerSmartPlayer
+        return new PokerPairPlayer();
     }
 
     public static PokerRandomPlayer createRandomPlayer(){ // Function that returns an instance of PokerRandomPlayer 

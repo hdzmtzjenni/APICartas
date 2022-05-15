@@ -10,12 +10,13 @@ public class TestPoker {
         CardGame poker = new PokerGame();
 
         Player player1 = new PokerUserPlayer();
-        Player player2 = new PokerUserPlayer();
-        Player player3 = new PokerUserPlayer();
+        Player player2 = PokerGame.createPairPlayer();
+        
+        
         
         poker.addPlayer("Jenni",player1);
-        poker.addPlayer("Norma", player2);
-        poker.addPlayer("Alex", player3);
+        poker.addPlayer("Gabo", player2);
+   
         System.out.println(PokerGame.playerList.get(1));
         // poker.addPlayer("Jose",player3);
 

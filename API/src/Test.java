@@ -13,7 +13,7 @@ import game.exception.NullException;
 public class Test {
 
 	public static void main(String[] args) {
-		Player player1 = PokerGame.createSmartPlayer();
+		Player player1 = PokerGame.createPairPlayer();
 		CardGame blackjack = new BlackJackGame();
 		Player player4 = BlackJackGame.createIntelligentPlayer();
 		Player player5 = BlackJackGame.createStuplidPlayer();
