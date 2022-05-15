@@ -22,8 +22,8 @@ public class TestPoker {
 
         poker.start();// revuelve cartas, reparte cartas 
         poker.playGame();
-        // ArrayList<Player> winners = poker.getWinner();
-		// System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+        ArrayList<Player> winners = poker.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
         
      
         
