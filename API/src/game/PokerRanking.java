@@ -24,7 +24,7 @@ public enum PokerRanking {
         return this.ranking;
     } 
     
-    public String toString() { // Override toString that prints the name of the enum Instance 
+    public String toString() { // Override toString that prints the name of the enum Instance  
     	return this.name();
     }
     
