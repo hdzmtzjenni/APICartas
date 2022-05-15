@@ -4,6 +4,10 @@ import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
+import game.exception.NumberException;
+
+import game.exception.IndexOutException;
+
 // PokerUserPlayer is a subclass from PokerPlayer that is used to aggregate all the functions needed to play Poker as a User with console Inputs. 
 
 public class PokerUserPlayer extends PokerPlayer{
@@ -43,18 +47,36 @@ public class PokerUserPlayer extends PokerPlayer{
 			if(action1== 'S'){
                 String cardTable = JOptionPane.showInputDialog("Card in table:");
                 int indexInTable = Integer.parseInt(cardTable);
-                if(indexInTable>PokerGame.getInTable().size()){
-                    JOptionPane.showMessageDialog(null, "Invalid Option", "Error", JOptionPane.WARNING_MESSAGE);
-				    action = JOptionPane.showInputDialog("Card in table:");
-					indexInTable = Integer.parseInt(cardTable);
-                }
+                while(indexInTable>PokerGame.getInTable().size()){
+					try {
+						OutOfBoundsException(cardTable, indexInTable);
+					} catch (IndexOutException e) {
+						e.printStackTrace();
+						cardTable = JOptionPane.showInputDialog("Card in table:");
+						indexInTable = Integer.parseInt(cardTable);
+					} catch (NumberException e) {
+						e.printStackTrace();
+						cardTable = JOptionPane.showInputDialog("Card in table:");
+						indexInTable = Integer.parseInt(cardTable);
+					}
+				}
+
                 String cardHand = JOptionPane.showInputDialog("Card in hand:");
                 int indexHand = Integer.parseInt(cardHand);
-                if(indexHand>getP_hand().size()){
-                    JOptionPane.showMessageDialog(null, "Invalid Option", "Error", JOptionPane.WARNING_MESSAGE);
-				    action = JOptionPane.showInputDialog("Card in hand");
-					indexHand = Integer.parseInt(cardHand);
-                }
+                while (indexHand>getP_hand().size()) {
+					try {
+						OutOfBoundsException(cardHand, indexHand);
+					} catch (IndexOutException e) {
+						e.printStackTrace();
+						cardHand = JOptionPane.showInputDialog("Card in hand");
+						indexHand = Integer.parseInt(cardHand);
+					} catch (NumberException e) {
+						e.printStackTrace();
+						cardHand = JOptionPane.showInputDialog("Card in hand");
+						indexHand = Integer.parseInt(cardHand);
+					}
+				}
+
                 PokerGame.swapCards(indexInTable, indexHand, getP_hand());
                 this.turn++;
                 break;
@@ -66,7 +88,15 @@ public class PokerUserPlayer extends PokerPlayer{
 			} 
 		}
 	}
-		
+
+	public void OutOfBoundsException(String card, int index) throws IndexOutException, NumberException{
+		if(index>PokerGame.getInTable().size() ||index>getP_hand().size()){
+			throw new IndexOutException(index);
+		}
+		if (!Character.isDigit(card.charAt(0))) {
+			throw new NumberException(card.charAt(0));
+		}
+	}
 		
 	
 }
