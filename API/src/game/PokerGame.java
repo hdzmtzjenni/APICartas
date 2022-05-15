@@ -6,6 +6,7 @@ import java.util.List;
 
 import game.exception.NoPlayersException;
 import game.exception.NullException;
+import game.exception.SameNameException;
 
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=-1;
@@ -123,14 +124,18 @@ public class PokerGame extends CardGame{
     public void addPlayer(String name, Player player) {
         try {
 			tryAddPlayer(name, player);
-		
 		} catch (NullException e) {
 			e.printStackTrace();
-		}
+		} catch (SameNameException e) {
+            e.printStackTrace();
+        }
     }
 
-	public void tryAddPlayer(String name, Player player) throws NullException{
+	public void tryAddPlayer(String name, Player player) throws NullException, SameNameException{
 		if (player == null) throw new NullException();
+        for (Player player1 : playerList) {
+            if(player1.name == name) throw new SameNameException(name);
+        }
 		if(player instanceof PokerPlayer  ) {
             player.name=name;
 			playerList.add(player);
@@ -148,7 +153,7 @@ public class PokerGame extends CardGame{
     }
 
     @Override
-    public void start() throws NoPlayersException{
+    public void start(){
         System.out.println("\n==================== POKER ====================");
 
         //Se inicializan todas las variables de los jugadores y de la baraja
@@ -163,15 +168,10 @@ public class PokerGame extends CardGame{
             player.handReady=false;
 		}
 
-        if(playerList.size()<MIN_PLAYERS) throw new NoPlayersException();
-
-        Card card;
-        for (int i = 0; i< playerList.size(); i++) {
-            for(int j=0; j<5; j++){
-                card = pack.getPack().get(j);
-                playerList.get(i).p_hand.add(card);
-                pack.getPack().remove(j);
-            }
+        try {
+            tryStart();
+        } catch (NoPlayersException e) {
+            e.printStackTrace();
         }
 
         //Se agregan 5 cartas a la mesa
@@ -183,13 +183,25 @@ public class PokerGame extends CardGame{
 		}
         
     }
+
+    public void tryStart() throws NoPlayersException{
+        if(playerList.size()<MIN_PLAYERS) throw new NoPlayersException();
+        Card card;
+        for (int i = 0; i< playerList.size(); i++) {
+            for(int j=0; j<5; j++){
+                card = pack.getPack().get(j);
+                playerList.get(i).p_hand.add(card);
+                pack.getPack().remove(j);
+            }
+        }
+    }
     @Override
     public void reset() {
 		playerList.removeAll(playerList);
         
     }
     @Override
-    public Player nextPlayer() {
+    public Player nextPlayer(){
         IndexNextPlayer++;
         if(IndexNextPlayer==playerList.size()) { 
             this.IndexNextPlayer=0; 
@@ -198,6 +210,7 @@ public class PokerGame extends CardGame{
 
 		return next;
     }
+
 
     @Override
     public boolean endGame() {
@@ -217,6 +230,7 @@ public class PokerGame extends CardGame{
     @Override
     public void playGame() {
         //El juego corre mientras endGame no se cumpla
+        
         while(!endGame()) {
 			Player p = nextPlayer();
             p.play();
