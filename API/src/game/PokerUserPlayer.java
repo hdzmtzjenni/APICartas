@@ -30,7 +30,7 @@ public class PokerUserPlayer extends PokerPlayer{
 			action = action.toUpperCase();
 			char action1 = action.charAt(0);
 
-			//Si la respuesta es diferente a H o S vuelve a preguntar hasta que lo ingrese bien
+			//If input is different of 'H' or 'S' it keeps asking until right 
 			while (action1!= 'H' && action1!='S' || action.length()>1) {
 				JOptionPane.showMessageDialog(null, "Invalid Option", "Error", JOptionPane.WARNING_MESSAGE);
 				action = JOptionPane.showInputDialog("SwapCards(S) -- HandReady(H):");
@@ -38,7 +38,8 @@ public class PokerUserPlayer extends PokerPlayer{
 				action1 = action.charAt(0);
 			}
 
-			//Si la respuesta es S, se le pregunta al jugador que carta de la mesa quiere agarrar y cual carta de su mano deja 
+			//if the input is 'S' it is demanded to input the Card Index from table he wants to grab and the Card Index of his own hand that he want to swap for. 
+			// Indexes are represented as [1-5] 
 			if(action1== 'S'){
                 String cardTable = JOptionPane.showInputDialog("Card in table:");
                 int indexInTable = Integer.parseInt(cardTable);
