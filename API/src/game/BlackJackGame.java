@@ -140,7 +140,7 @@ public class BlackJackGame extends CardGame {
 			player.name= name;
 			playerList.add(player);
 		}
-		else System.out.printf("\nEste jugador no sabe jugar BlackJack ");
+		else System.out.printf("\n%s  no sabe jugar BlackJack",name);
 	}
 
 	

@@ -15,7 +15,8 @@ public class TestPoker {
         
         poker.addPlayer("Jenni",player1);
         poker.addPlayer("Norma", player2);
-        poker.addPlayer("Jenni", player2);
+        poker.addPlayer("Alex", player3);
+        System.out.println(PokerGame.playerList.get(1));
         // poker.addPlayer("Jose",player3);
 
         poker.start();// revuelve cartas, reparte cartas 
