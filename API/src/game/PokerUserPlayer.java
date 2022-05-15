@@ -4,26 +4,28 @@ import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
+// PokerUserPlayer is a subclass from PokerPlayer that is used to aggregate all the functions needed to play Poker as a User with console Inputs. 
+
 public class PokerUserPlayer extends PokerPlayer{
 
-    public PokerUserPlayer() {
+    public PokerUserPlayer() { // Constructor
     }
 
     @Override
-	public void play() {
+	public void play() { // Override of the play function that each of Player Subclass has 
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name);
 
-		while (!handReady) {//Mientras el jugador no termine su turno
-			//Se muestran las cartas que hay en la mesa
+		while (!handReady) {//While turn not finished 
+			//The cards inTable are shown in console 
             System.out.println("\nIn Table");
             System.out.println(PokerGame.getInTable());
 
-			//Se muestran las cartas que el jugador tiene en la mano
+			//The cards that the player has are printed too
             System.out.println("\nHand\n");
 			Collections.sort(this.getP_hand());
 			System.out.println(this.getP_hand());
 			
-			//El jugador decide si cambia una carta de la mesa por una de su mano o si quiere tocar para hacer la última ronda
+			//The User Inputs its decision whether he swaps card or decides that is hand is ready, making it last round for everybody
 			String action = JOptionPane.showInputDialog("SwapCards(S) -- HandReady(H):");
 			action = action.toUpperCase();
 			char action1 = action.charAt(0);
