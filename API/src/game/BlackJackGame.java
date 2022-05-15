@@ -3,6 +3,8 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.exception.NoPlayersException;
+
 
 /*
  * 
@@ -134,7 +136,7 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public void start() {
+	public void start() throws NoPlayersException {
 		System.out.println("\n==================== BLACK JACK GAME ====================");
 		// Se inicializan los arreglos y se bajarean las cartas
 		pack = new PackOfCards();
@@ -148,6 +150,7 @@ public class BlackJackGame extends CardGame {
             player.handReady=false;
 		}
 
+		if (playerList.size()< MIN_PLAYERS) throw new NoPlayersException();
 		//Se reparten 2 cartas a cada jugador para empezar el juego
 		Card card;
 		for (int i = 0; i< playerList.size(); i++) {

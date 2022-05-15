@@ -1,16 +1,11 @@
 
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 import game.BlackJackGame;
 import game.BlackJackUserPlayer;
-import game.Card;
 import game.CardGame;
-import game.PackOfCards;
 import game.Player;
+import game.exception.NoPlayersException;
 
 
 public class Test {
@@ -30,16 +25,25 @@ public class Test {
 		blackjack.addPlayer("Jenni",player7);
 		blackjack.addPlayer("Joseph",player8);
 		blackjack.addPlayer("Anna",player5);
-		blackjack.start();
+		try {
+			blackjack.start();
+			
+		
+		} catch (NoPlayersException e) {
+			e.printStackTrace();
+		}
 
 		blackjack.playGame();
 			
-		ArrayList<Player> winners = blackjack.getWinner();
-		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
-		
+			ArrayList<Player> winners = blackjack.getWinner();
+			System.out.printf("\n Winner/Winners: %s \n",winners.toString());
 			 	
 		//Volvamos a jugar Blackjack con los mismos jugadores
-		blackjack.start();// vuelve a revolver y repartir, el estatus de cada jugador se reinicia
+		try {
+			blackjack.start();// vuelve a revolver y repartir, el estatus de cada jugador se reinicia
+		} catch (NoPlayersException e) {
+			e.printStackTrace();
+		}
 		blackjack.playGame();
 			
 		winners = blackjack.getWinner();

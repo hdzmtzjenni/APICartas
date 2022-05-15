@@ -1,9 +1,10 @@
 package game;
 
 import java.util.ArrayList;
-import game.PokerRanking;
 import java.util.Collections;
 import java.util.List;
+
+import game.exception.NoPlayersException;
 
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=-1;
@@ -71,7 +72,6 @@ public class PokerGame extends CardGame{
          default: PR = PokerRanking.HighCard;
                   break;
      }
-    	 
     	 return PR;
     }
 
@@ -138,7 +138,7 @@ public class PokerGame extends CardGame{
     }
 
     @Override
-    public void start() {
+    public void start() throws NoPlayersException{
         System.out.println("\n==================== POKER ====================");
 
         //Se inicializan todas las variables de los jugadores y de la baraja
@@ -153,15 +153,16 @@ public class PokerGame extends CardGame{
             player.handReady=false;
 		}
 
-		//Se reparten 5 cartas a cada jugador para empezar el juego
-		Card card;
-		for (int i = 0; i< playerList.size(); i++) {
-			for(int j=0; j<5; j++){
-				card = pack.getPack().get(j);
-				playerList.get(i).p_hand.add(card);
-				pack.getPack().remove(j);
-			}
-		}
+        if(playerList.size()<MIN_PLAYERS) throw new NoPlayersException();
+
+        Card card;
+        for (int i = 0; i< playerList.size(); i++) {
+            for(int j=0; j<5; j++){
+                card = pack.getPack().get(j);
+                playerList.get(i).p_hand.add(card);
+                pack.getPack().remove(j);
+            }
+        }
 
         //Se agregan 5 cartas a la mesa
         Card card1;

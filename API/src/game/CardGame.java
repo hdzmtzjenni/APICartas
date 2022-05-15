@@ -2,8 +2,10 @@ package game;
 
 import java.util.ArrayList;
 
+import game.exception.NoPlayersException;
+
 public abstract class CardGame {
-	public abstract void start();
+	public abstract void start() throws NoPlayersException;
 	public abstract void reset();
 	public abstract Player nextPlayer();
 	public abstract boolean endGame();
