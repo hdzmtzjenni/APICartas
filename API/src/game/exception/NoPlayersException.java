@@ -6,6 +6,6 @@ public class NoPlayersException extends Exception {
 	}
 
 	public String toString() {
-		return String.format("%s \nNo hay jugadores en el juego ", getMessage());
+		return String.format("%s \nNo hay suficientes jugadores en el juego ", getMessage());
 	}
 }

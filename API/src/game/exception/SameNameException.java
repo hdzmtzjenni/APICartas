@@ -9,6 +9,6 @@ public class SameNameException extends Exception{
 	}
 
 	public String toString() {
-		return String.format("%s \nYa existe un jugador el nombre: %s ", getMessage(),name);
+		return String.format("\n%s \nYa existe un jugador el nombre: %s ", getMessage(),name);
 	}
 }

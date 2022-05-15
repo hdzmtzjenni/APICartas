@@ -140,7 +140,7 @@ public class BlackJackGame extends CardGame {
 			player.name= name;
 			playerList.add(player);
 		}
-		else System.out.printf("Este jugador no sabe jugar BlackJack ");
+		else System.out.printf("\nEste jugador no sabe jugar BlackJack ");
 	}
 
 	
@@ -189,13 +189,24 @@ public class BlackJackGame extends CardGame {
 
 	@Override
 	public void playGame() {
-		while(!endGame()) {
+		try {
+			tryGame();
+		} catch (NoPlayersException e) {
+			e.printStackTrace();
+		}
+
+		while(!endGame() && playerList.size()>=MIN_PLAYERS) {
 			Player p = nextPlayer();// John, Mary, Joseph, Anna, John, Mary, ...
 			p.play();
 			List<Card> cards = p.getP_hand();
 			System.out.println(cards);
 		}
-		
+	}
+
+	public void tryGame() throws NoPlayersException{
+		if (playerList.size()<MIN_PLAYERS) {
+			throw new NoPlayersException();
+		}
 	}
 
 }
