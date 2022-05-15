@@ -45,39 +45,35 @@ public class PokerUserPlayer extends PokerPlayer{
 			//if the input is 'S' it is demanded to input the Card Index from table he wants to grab and the Card Index of his own hand that he want to swap for. 
 			// Indexes are represented as [1-5] 
 			if(action1== 'S'){
-                String cardTable = JOptionPane.showInputDialog("Card in table:");
-                int indexInTable = Integer.parseInt(cardTable);
-                while(indexInTable>PokerGame.getInTable().size()){
+				String cardTable = JOptionPane.showInputDialog("Card in table:");
+				while (!Character.isDigit(cardTable.charAt(0))) {
 					try {
-						OutOfBoundsException(cardTable, indexInTable);
-					} catch (IndexOutException e) {
-						e.printStackTrace();
-						cardTable = JOptionPane.showInputDialog("Card in table:");
-						indexInTable = Integer.parseInt(cardTable);
+						NumberFormatException(cardTable);
 					} catch (NumberException e) {
-						e.printStackTrace();
+						System.out.println(e);
 						cardTable = JOptionPane.showInputDialog("Card in table:");
-						indexInTable = Integer.parseInt(cardTable);
 					}
 				}
-
-                String cardHand = JOptionPane.showInputDialog("Card in hand:");
-                int indexHand = Integer.parseInt(cardHand);
-                while (indexHand>getP_hand().size()) {
+		
+				int indexInTable = Integer.parseInt(cardTable);
+			
+				indexInTable =tryCardInTable(cardTable, indexInTable);
+				// Ask for the card to swap in the hand 
+				String cardHand = JOptionPane.showInputDialog("Card in Hand:");
+				while (!Character.isDigit(cardHand.charAt(0))) {
 					try {
-						OutOfBoundsException(cardHand, indexHand);
-					} catch (IndexOutException e) {
-						e.printStackTrace();
-						cardHand = JOptionPane.showInputDialog("Card in hand");
-						indexHand = Integer.parseInt(cardHand);
+						NumberFormatException(cardHand);
 					} catch (NumberException e) {
-						e.printStackTrace();
-						cardHand = JOptionPane.showInputDialog("Card in hand");
-						indexHand = Integer.parseInt(cardHand);
+						System.out.println(e);
+						cardHand = JOptionPane.showInputDialog("Card in table:");
 					}
 				}
+		
+				int indexInHand = Integer.parseInt(cardHand);
+				indexInHand=tryCardInHand(cardHand, indexInHand);
+				
 
-                PokerGame.swapCards(indexInTable, indexHand, getP_hand());
+                PokerGame.swapCards(indexInTable, indexInHand, getP_hand());
                 this.turn++;
                 break;
             }
@@ -89,14 +85,63 @@ public class PokerUserPlayer extends PokerPlayer{
 		}
 	}
 
-	public void OutOfBoundsException(String card, int index) throws IndexOutException, NumberException{
+	public void OutOfBoundsException(String card, int index) throws IndexOutException{
 		if(index>PokerGame.getInTable().size() ||index>getP_hand().size()){
 			throw new IndexOutException(index);
 		}
+	}
+
+	public void NumberFormatException(String card) throws NumberException{
 		if (!Character.isDigit(card.charAt(0))) {
 			throw new NumberException(card.charAt(0));
 		}
 	}
+
+	public int tryCardInTable(String card, int index){
 		
-	
+		while(index>PokerGame.getInTable().size()  ){
+			try {
+				OutOfBoundsException(card, index);
+			} catch (IndexOutException e) {
+				System.out.println(e);;
+				card = JOptionPane.showInputDialog("Card in table:");
+			} 
+
+			while (!Character.isDigit(card.charAt(0))) {
+				try {
+					NumberFormatException(card);
+				} catch (NumberException e) {
+					System.out.println(e);
+					card = JOptionPane.showInputDialog("Card in table:");
+				}
+			}
+
+			index = Integer.parseInt(card);
+		}
+		return index;
+	}
+
+	public int tryCardInHand(String card, int index){
+		while(index>this.getP_hand().size()  ){
+			try {
+				OutOfBoundsException(card, index);
+			} catch (IndexOutException e) {
+				System.out.println(e);
+				card = JOptionPane.showInputDialog("Card in Hand:");
+			} 
+
+			while (!Character.isDigit(card.charAt(0))) {
+				try {
+					NumberFormatException(card);
+				} catch (NumberException e) {
+					System.out.println(e);
+					card = JOptionPane.showInputDialog("Card in Hand:");
+				}
+			}
+
+			index = Integer.parseInt(card);
+		}
+		return index;
+	}
+
 }

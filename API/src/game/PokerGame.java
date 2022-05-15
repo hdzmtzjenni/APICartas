@@ -87,7 +87,7 @@ public class PokerGame extends CardGame{
         // The Max Value of hand is calculated 
 		for (Player player1: playerList) { // for each player in playerlist(All Players that have played )
 			PokerRanking PR = getRankingFromInt(player1.sumOfHand()); // Determines as a enum PokerRanking instance the value of the hand 
-            System.out.printf("\nPlayer %s has: %s of %d ",player1.name, PR.toString(),player1.maxPlayableValue); // Print of Play using to String of enum and attribute MaxPlayableValue 
+            System.out.printf("\nPlayer %s has: %s of %s ",player1.name, PR.toString(),player1.getMaxPlayableCard().getValueString()); // Print of Play using to String of enum and attribute MaxPlayableValue 
 			if (player1.sumOfHand()>max) {
 				max = player1.sumOfHand(); // Determines the max value of hand
 			}
@@ -106,14 +106,14 @@ public class PokerGame extends CardGame{
             max= 0; // Max is set to 0 
             //For each of players within StillPlaying 
             for (Player player : stillPlaying) {
-                if (player.maxPlayableValue>max) { // Determines which is the  highest MaxPlayableValue of each Player 
-                    max=player.maxPlayableValue; // If it finds a higher one, Max is swapped 
+                if (player.getMaxPlayableCard().getValue()>max) { // Determines which is the  highest MaxPlayableValue of each Player 
+                    max=player.getMaxPlayableCard().getValue(); // If it finds a higher one, Max is swapped 
                 }
             }
 
             //For each player that is on stillPlaying, the ones that are equal to maxPlayableValue are added to winners. 
             for (Player player2 : stillPlaying) {
-                if (player2.maxPlayableValue==max) {
+                if (player2.getMaxPlayableCard().getValue()==max) {
                     winners.add(player2); // Add to Winners 
                 }
             }
@@ -240,7 +240,7 @@ public class PokerGame extends CardGame{
 			List<Card> cards = p.getP_hand(); // get each p_hand 
             Collections.sort(cards); // sort hand
 
-			System.out.println(cards); // print hand 
+			System.out.println("\nHand \n"+ cards); // print hand 
 
             // If one Player has hand ready , is last round for everyone 
             if(p.handReady){
@@ -251,7 +251,7 @@ public class PokerGame extends CardGame{
                 while (p1!=p) { 
                     p1.play();
                     cards = p1.getP_hand();
-			        System.out.println(cards);
+			        System.out.println("\nHand \n"+ cards); // print hand 
                     p1.handReady=true; // also put handready true 
                     p1 = nextPlayer();
                 } 

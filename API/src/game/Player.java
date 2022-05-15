@@ -11,7 +11,7 @@ public abstract class Player {
 	public String name;
 	public int turn =0;
 	public boolean handReady=false;
-	public int maxPlayableValue= 0;
+	public Card maxPlayableCard;
 
 	
 	public Player(){
@@ -49,6 +49,9 @@ public abstract class Player {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Card getMaxPlayableCard() {
+		return maxPlayableCard;
 	}
 	
 	@Override
