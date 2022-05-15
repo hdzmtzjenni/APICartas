@@ -38,8 +38,8 @@ public class BlackJackGame extends CardGame {
 	public static IntelligentPlayer createIntelligentPlayer() {
 		return new IntelligentPlayer();
 	}
-	public static StuplidPlayer createStuplidPlayer() {
-		return new StuplidPlayer();
+	public static FoolPlayer createStuplidPlayer() {
+		return new FoolPlayer();
 
 	}
 

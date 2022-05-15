@@ -1,7 +1,9 @@
 package game;
 
 
-public class StuplidPlayer extends BlackJackPlayer{
+// 
+
+public class FoolPlayer extends BlackJackPlayer{
 
 	@Override
 	public void play() {
