@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.exception.NoPlayersException;
+import game.exception.NullException;
 
 
 /*
@@ -119,13 +120,25 @@ public class BlackJackGame extends CardGame {
 	}
 
 	@Override
-	public void addPlayer(String name, Player player) {
+	public void addPlayer(String name, Player player){
+		try {
+			tryAddPlayer(name, player);
+		
+		} catch (NullException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void tryAddPlayer(String name, Player player) throws NullException{
+		if (player == null) throw new NullException();
 		if(player instanceof BlackJackPlayer  ) {
 			player.name= name;
 			playerList.add(player);
 		}
 		else System.out.printf("Este jugador no sabe jugar BlackJack ");
 	}
+
+	
 
 	@Override
 	public void removePlayer(String name) {

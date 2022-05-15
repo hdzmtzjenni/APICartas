@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import game.exception.NoPlayersException;
+import game.exception.NullException;
 
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=-1;
@@ -120,14 +121,23 @@ public class PokerGame extends CardGame{
 
     @Override
     public void addPlayer(String name, Player player) {
-        if(player instanceof PokerPlayer  ) {
+        try {
+			tryAddPlayer(name, player);
+		
+		} catch (NullException e) {
+			e.printStackTrace();
+		}
+    }
+
+	public void tryAddPlayer(String name, Player player) throws NullException{
+		if (player == null) throw new NullException();
+		if(player instanceof PokerPlayer  ) {
             player.name=name;
 			playerList.add(player);
 
 		}
 		else System.out.printf("Este player no sabe jugar Poker ");
-		
-    }
+	}
     
     @Override
     public void removePlayer(String name) {

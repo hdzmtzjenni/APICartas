@@ -6,6 +6,7 @@ import game.BlackJackUserPlayer;
 import game.CardGame;
 import game.Player;
 import game.exception.NoPlayersException;
+import game.exception.NullException;
 
 
 public class Test {
@@ -24,7 +25,8 @@ public class Test {
 		blackjack.addPlayer("Dani",player4);
 		blackjack.addPlayer("Jenni",player7);
 		blackjack.addPlayer("Joseph",player8);
-		blackjack.addPlayer("Anna",player5);
+		blackjack.addPlayer("Anna",null);
+		
 		try {
 			blackjack.start();
 			
