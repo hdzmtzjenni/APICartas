@@ -16,7 +16,7 @@ public class Test {
 		Player player1 = PokerGame.createPairPlayer();
 		CardGame blackjack = new BlackJackGame();
 		Player player4 = BlackJackGame.createIntelligentPlayer();
-		Player player5 = BlackJackGame.createStuplidPlayer();
+		Player player5 = BlackJackGame.createFoolPlayer();
 		Player player6 = new BlackJackUserPlayer();
 
 		blackjack.addPlayer("John",player4);

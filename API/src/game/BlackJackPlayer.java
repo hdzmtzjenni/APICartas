@@ -1,13 +1,14 @@
 package game;
 
 
+// Class that Extends Player and represents all the subclasses of player that know how to play BlackJack 
 public abstract class BlackJackPlayer extends Player {
 	
-	public BlackJackPlayer(){
+	public BlackJackPlayer(){ // Public Constructor 
 		
 	}
 	@Override
-	public int sumOfHand(){
+	public int sumOfHand(){ // sum Of Hand is equacl in all BlackJack Players 
 		int value=0;
 		boolean as= false;
 		
@@ -22,7 +23,7 @@ public abstract class BlackJackPlayer extends Player {
 			value +=cardValue;
 		}
 
-		/* El as vale 1 al principio, pero si al cambiar su valor por 11 el resultado es igual a 21 o menor se cambia*/
+		/* Ace is always equal to 1, except that if it changes to 11, the result is less or 21 it changes. */
 		if ( as == true && value + 10 <= 21 )
 			value = value + 10;
 		return value;
