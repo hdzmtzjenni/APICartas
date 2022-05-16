@@ -33,9 +33,12 @@ public class TestPoker {
 		poker.removePlayer("Pedrito");
 		poker.addPlayer("Mary", player6); // error de sintaxis: player6 no sabe jugar Poker (no es PokerPlayer)
 		poker.addPlayer("Nulo", null); // excepción: no se admiten apuntadores nulos
+		poker.start();
 		poker.playGame();
 		poker.reset();
-		poker.start(); // Excepción: no hay jugadores; por cada juego, definan mínimo/máximo de jugadores
+		poker.start(); 
+		poker.playGame();// Excepción: no hay jugadores; por cada juego, definan mínimo/máximo de jugadores
+		
         
         
     }
