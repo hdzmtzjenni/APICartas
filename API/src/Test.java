@@ -13,6 +13,7 @@ import game.exception.NullException;
 public class Test {
 
 	public static void main(String[] args) {
+		
 		Player player1 = PokerGame.createPairPlayer();
 		CardGame blackjack = new BlackJackGame();
 		Player player4 = BlackJackGame.createIntelligentPlayer();
@@ -43,10 +44,6 @@ public class Test {
 		blackjack.addPlayer("Mary", player5);// Mary ya esta en el juego. Deciden ustedes que hacer: lanzar excepcion, ignorar esta llamada, o reemplazar player6 por player5
 		blackjack.start();
 		blackjack.playGame();
-
-		// winners = blackjack.getWinner();
-		// System.out.printf("\n Winner/Winners: %s \n",winners.toString());
-
 		
 	}
 }
