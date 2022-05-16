@@ -17,14 +17,14 @@ public class FoolPlayer extends BlackJackPlayer{
 			int getRandomValue = (int) (Math.random()*(100-1)) + 1; // Get Random Number 
 		
 			if (this.sumOfHand()==21) {//If the sum of his Hand is equal to 21, he wins. 
-				System.out.printf("%s tiene BlackJack",this.name);
+				System.out.printf("%s has BlackJack",this.name);
 				this.handReady = true;
 				this.turn++;
 				break;
 			}
 
 			if (this.sumOfHand()>21) {// If the sum of his Hand is greater than 21, he loses. 
-				System.out.printf("Tiene más de 21, %s pierde ",this.name);
+				System.out.printf("Has more than 21 in Hand, %s losses  ",this.name);
 				this.handReady=true;
 				this.turn++;
 				break;

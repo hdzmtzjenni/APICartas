@@ -1,88 +1,80 @@
 package game;
 
 /*
- * Esta clase define cada una de las cartas de la baraja
+ * This Class Defines Primary Card. Fundamental of every single class. 
  * @author Jennifer Hernandez,Gabriel Olvera
  */
-public class Card implements Comparable<Card>{
+public class Card implements Comparable<Card>{ // Use a comparable implementation to be able to use generic Collections methos such as sort 
 //	Atributos
 	protected Suits suit;
 	protected int value;
 	protected int id;
-	protected String image;
 	protected  String  color;
 	
 	/*
-	 * Constructor de la clase Card
-	 * @param id es el identificador de cada carta
-	 * @param suit es un valor tipo Suits que especifica en palo de la carta
-	 * @param number es el numero que identifica a la carta
-	 * @param image es la dirección para la imagen de cada carta
+	 * Constructor of Card Class
+	 * @param id of each card
+	 * @param suit an instance of enum Suits that represents suit of card 
+	 * @param number is number of each Card 
 	 */
-	public Card(int id, Suits suit, int value,String image,String color) {
+	public Card(int id, Suits suit, int value,String image,String color) { // Public Constructor 
 		setSuit(suit);
 		setValue(value);
 		setId(id);
-		setImage(image);
 		setColor(color);
 	}
 
 
     /*
-	 * Metodo que actualiza el valor del atributo suit
+	 * Set Suit of Card 
 	 */
 	public void setSuit(Suits suit) {
 		this.suit = suit;
 	}
 
 	/*
-	 * Metodo que actualiza el valor del atributo number
-	 * @param number es el nuevo valor que tendra el atributo number
+	 * Set Number of Card 
+	 * @param number new value of Card 
 	 */
 	public void setValue(int value) {
 		this.value = value;
 	}
 
 	/*
-	 * Metodo que actualiza el valor del atributo id
-	 * @param id es el nuevo valor que tendra el atributo id
+	 * Set Id Of each Card 
+	 * @param id new id 
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	/*
-	 * Metodo que actualiza el valor del atributo image
-	 * @param image es el nuevo valor que tendra el atributo image
-	 */
-	public void setImage(String image) {
-		this.image=image;
-	}
 	
 	
-	public String getColor() {
+	public String getColor() { // Returns Color of Card 
 		return color;
 	}
 
-	public void setColor(String color) {
+	public void setColor(String color) { // Set Color of Card 
 		this.color = color;
 	}
 
 	/*
-	 * Metodo que devuelve el palo de la carta
-	 * @return el palo de la carta
+	 * Return Suit of Card using Suits enum 
+	 * @return Suit 
 	 */
 	public Suits getSuit() {
 		return suit;
 	}
 
 	/*
-	 * Metodo que devuelve el numero de la carta
-	 * @return el numero de la carta
+	 * Method that return number of Card 
+	 * @return card value 
 	 */
 	public int getValue() {
 		return value;
 	}
+	
+	// Each Card Has its own value to string 
 
 	public String getValueString() {
 		switch (value) {
@@ -103,27 +95,19 @@ public class Card implements Comparable<Card>{
 		}
 	}
 	/*
-	 * Metodo que devuelve el identificador de la carta
-	 * @return el identifiador de la carta
+	 * Return Id
+	 * @return Id 
 	 */
 	public int getId() {
 		return id;
 	}
 
-	/*
-	 * Metodo que devuelve la direccion de la imagen de la carta
-	 * @return la direccion de la imagen de la carta
-	 */
-	public String getImage() {
-		return image;
-	}
-
-	@Override
+	@Override // Override Of String that prints suit and color 
 	public String toString() {
 		return  getValueString() + "|"+suit + "|"+color;
 	}
 
-	@Override
+	@Override // Override of Compare to , this adds a comparable implementation and also allows to implement generic methods such as sort 
 	public int compareTo(Card o) {
 		if(this.value == o.value) return 0;
 		if(this.value< o.value) return -1;
