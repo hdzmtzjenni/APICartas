@@ -2,67 +2,152 @@ package game;
 
 import java.util.ArrayList;
 
-/*
+/** 
  * Class that represents Player of all the API, it contains abstract methods that are implemented in every single Game. 
  * @author Jennifer Hernandez,Gabriel Olvera
  */
 public abstract class Player {
-	public  ArrayList<Card> p_hand = new ArrayList<>(); // Your Hand of Cards
-	public String name; // Name
-	public int turn =0; // Turn is used as a control in a lot of turn management functions 
-	public boolean handReady=false; // Boolean to determine wether your hand is ready 
-	public Card maxPlayableCard; // Card that is the highest according to game, used to tie brake or check winners 
+	protected  ArrayList<Card> p_hand = new ArrayList<>(); // Your Hand of Cards
+	protected String name; // Name
+	protected int turn =0; // Turn is used as a control in a lot of turn management functions 
+	protected boolean handReady=false; // Boolean to determine wether your hand is ready 
+	protected Card maxPlayableCard; // Card that is the highest according to game, used to tie brake or check winners 
 
-	
-	public Player(){ // Public Constructor
+	/**
+	 * Public Player Constructor 
+	 * @param name
+	 */
+	public Player() { 
 		
 	}
-	public Player(String name) { // Name Constructor 
-		setName(name);
-	}
 	
-	public void drawCard(){ // Add a card from the Pack of cards and erase it from it 
+	/**
+	 * Add a card from the Pack of cards and erase it from it 
+	 */
+	public void drawCard(){ 
 		this.p_hand.add(BlackJackGame.pack.getPack().get(0));
 		BlackJackGame.pack.getPack().remove(0);
 	}
-	public  void putCardInTrashPile(){ // Tentative function for games that use a Trash Pile 
+	
+	/**
+	 * Tentative function for games that use a Trash Pile 
+	 */
+	public  void putCardInTrashPile(){ 
 
 	}
-	public  void passTurn(){ // Function that enables hand ready and also passes turn. 
+
+	/**
+	 * Function that enables hand ready and also passes turn 
+	 */
+	public  void passTurn(){ 
 		this.handReady=true;
 		this.turn++;
 	}
 
-	public abstract int sumOfHand(); // Function used to determine the value of the cards you have 
+	/**
+	 * Function used to determine the value of the cards you have 
+	 * @return p_hand your hand of cards 
+	 */
+	public abstract int sumOfHand(); 
 	
-	public ArrayList<Card> getP_hand() { // returns your hand of cards 
+	/**
+	 * Methor that return the hand of cards
+	 * @return p_hand
+	 */
+	public ArrayList<Card> getP_hand() { 
 		return p_hand;
 	}
 
-	public void setP_hand(ArrayList<Card> p_hand) { // Set your hand of cards
+	/**
+	 * Set your hand of cards
+	 * @param p_hand
+	 */
+	public void setP_hand(ArrayList<Card> p_hand) { 
 		this.p_hand = p_hand;
 	}
 
-	public String getName() { // returns your name
+	/**
+	 * returns your name
+	 * @return name
+	 */
+	public String getName() { 
 		return name;
 	}
 
-	public void setName(String name) { // sets your name
+	/**
+	 * sets your name
+	 * @param name
+	 */
+	public void setName(String name) { 
 		this.name = name;
 	}
-	public Card getMaxPlayableCard() { // gets MaxPlayableCard
+
+	/**
+	 * gets MaxPlayableCard
+	 * @return Card
+	 */
+	public Card getMaxPlayableCard() { 
 		return maxPlayableCard;
 	}
 	
+	/**
+	 * method that return the number of turn of the Player
+	 * @return turn 
+	 */
+	public int getTurn() {
+		return turn;
+	}
+
+	/**
+	 * Set the number of turns
+	 * @param turn
+	 */
+	public void setTurn(int turn) {
+		this.turn = turn;
+	}
+
+	/**
+	 * Method that return if the player end your turn
+	 * @return handReady
+	 */
+	public boolean isHandReady() {
+		return handReady;
+	}
+
+	/**
+	 * Set handReady
+	 * @param handReady
+	 */
+	public void setHandReady(boolean handReady) {
+		this.handReady = handReady;
+	}
+
+	/**
+	 * Set MaxPlayableCard
+	 * @param maxPlayableCard
+	 */
+	public void setMaxPlayableCard(Card maxPlayableCard) {
+		this.maxPlayableCard = maxPlayableCard;
+	}
+
+	/**
+	 * Override To Print Name
+	 */
 	@Override
-	public String toString(){ // Override To Print Name
+	public String toString(){ 
 		return this.name;
 	}
 	
-	public abstract void play(); // Each Play is different from game to game, 
-	
+	/**
+	 * Each Play is different from game to game
+	 */
+	public abstract void play(); 
 
-	public boolean sameSuit() { // Function to determine wether all your cards are same suit 
+	/**
+	 * Function to determine wether all your cards are same suit 
+	 * @return boolean
+	 */
+	public boolean sameSuit() { 
 		int flag = 0;
 		Suits suit = p_hand.get(0).getSuit();
 		for (Card c: p_hand) {

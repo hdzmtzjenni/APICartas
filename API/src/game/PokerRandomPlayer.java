@@ -2,13 +2,21 @@ package game;
 
 import java.util.Collections;
 
-// SubClass Of Poker Player of a Random Poker Player that based on probabilities changes cards and also has a 10 percent chance of ending round 
+/**
+ * SubClass Of Poker Player of a Random Poker Player that based on probabilities changes cards and also has a 10 percent chance of ending round 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public class PokerRandomPlayer extends PokerPlayer {
     
     public PokerRandomPlayer() { // Public Constructor 
     }
     
-    private int getRandomIndex(int randomInt) { // Get a random index depending in which number the random falled, every index has 20% chance 
+	/**
+	 * Get a random index depending in which number the random falled, every index has 20% chance 
+	 * @param randomInt
+	 * @return index
+	 */
+    private int getRandomIndex(int randomInt) { 
     	int returnIndex =0;
     	if (randomInt >=0 && randomInt<= 20) {
 			returnIndex = 1;
@@ -29,11 +37,11 @@ public class PokerRandomPlayer extends PokerPlayer {
 		return returnIndex;
     }
     	
-
-    @Override // Override the Play Method , playing random 
-	public void play() { 
-		// TODO Auto-generated method stub
-    	
+	/**
+	 * Override the Play Method , playing random 
+	 */
+    @Override 
+	public void play() {     	
     	System.out.printf("\n\n----------------- Player %s -----------------",this.name);
     	while (!handReady) {// until Player not finish turn 
 			//The cards inTable are shown in console 
@@ -47,7 +55,7 @@ public class PokerRandomPlayer extends PokerPlayer {
 			
 			int getRandomValue = (int) (Math.random()*(100-1)) + 1; // Get Random Number 
 			if (getRandomValue>=0 && getRandomValue<= 10) { // 10%chance of ending turn right away
-				
+				System.out.printf("%s Hand Ready ",this.name); // hand ready 
 				passTurn();
 				break;
 				
@@ -60,8 +68,6 @@ public class PokerRandomPlayer extends PokerPlayer {
 			}
 			
     	}
-
-		
 		
 	}
 }

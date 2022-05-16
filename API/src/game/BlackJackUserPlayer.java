@@ -2,10 +2,18 @@ package game;
 
 import javax.swing.JOptionPane;
 
-// Class that extends BlackJackPlayer and uses methods of how to play Black Jack as a User 
-
+/**
+ * Class that extends BlackJackPlayer and uses methods of how to play Black Jack as a User 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public class BlackJackUserPlayer extends BlackJackPlayer{
 
+	public BlackJackUserPlayer() {
+	}
+
+	/**
+	 * Override of the play function that everytype of BlackJackPlayer has.
+	 */
 	@Override
 	public void play() {
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name);

@@ -1,13 +1,22 @@
 package game;
 
-// Subclass of BlackPlayer that emulates the playstile of an Intelligent Player of Type BlackJackPlayer 
-public class IntelligentPlayer extends BlackJackPlayer {
+/**
+ * Subclass of BlackPlayer that emulates the playstile of an Intelligent Player of Type BlackJackPlayer 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
+public class BlackJackIntelligentPlayer extends BlackJackPlayer {
 	
-	public IntelligentPlayer(){ //Public Constructor 
+	/**
+	 * Public Constructor
+	 */
+	public BlackJackIntelligentPlayer(){  
 
 	}
 	
-	// Function of Play that also evaluates probabilities depending on Sum of hands if it's convinient to keep grabbing 
+	/**
+	 * Function of Play that also evaluates probabilities depending on Sum of hands if it's convinient to keep grabbing 
+	 */
+	@Override
 	public void play() {
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name);
 		
@@ -74,15 +83,6 @@ public class IntelligentPlayer extends BlackJackPlayer {
 					break;
 				}
 			}
-			
-			
 		}
-		
-		
-		
 	}
-
-	
-	
-
 }

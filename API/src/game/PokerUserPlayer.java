@@ -8,15 +8,23 @@ import game.exception.NumberException;
 
 import game.exception.IndexOutException;
 
-// PokerUserPlayer is a subclass from PokerPlayer that is used to aggregate all the functions needed to play Poker as a User with console Inputs. 
-
+/**
+ * PokerUserPlayer is a subclass from PokerPlayer that is used to aggregate all the functions needed to play Poker as a User with console Inputs. 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public class PokerUserPlayer extends PokerPlayer{
 
-    public PokerUserPlayer() { // Constructor
+	/**
+	 * Public Constructor
+	 */
+    public PokerUserPlayer() { 
     }
 
+	/**
+	 * Override of the play function that each of Player Subclass has 
+	 */
     @Override
-	public void play() { // Override of the play function that each of Player Subclass has 
+	public void play() { 
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name);
 
 		while (!handReady) {//While turn not finished 
@@ -78,26 +86,26 @@ public class PokerUserPlayer extends PokerPlayer{
                 break;
             }
 			else if(action1== 'H'){//if the choice is H, the turn ends 
-				System.out.printf("%s Stand ",this.name);
+				System.out.printf("%s Hand Ready\n ",this.name); // hand ready 
 				passTurn();
 				break;
 			} 
 		}
 	}
 
-	public void OutOfBoundsException(String card, int index) throws IndexOutException{
+	private void OutOfBoundsException(String card, int index) throws IndexOutException{
 		if(index>PokerGame.getInTable().size() ||index>getP_hand().size()){
 			throw new IndexOutException(index);
 		}
 	}
 
-	public void NumberFormatException(String card) throws NumberException{
+	private void NumberFormatException(String card) throws NumberException{
 		if (!Character.isDigit(card.charAt(0))) {
 			throw new NumberException(card.charAt(0));
 		}
 	}
 
-	public int tryCardInTable(String card, int index){
+	private int tryCardInTable(String card, int index){
 		
 		while(index>PokerGame.getInTable().size()  ){
 			try {
@@ -121,7 +129,7 @@ public class PokerUserPlayer extends PokerPlayer{
 		return index;
 	}
 
-	public int tryCardInHand(String card, int index){
+	private int tryCardInHand(String card, int index){
 		while(index>this.getP_hand().size()  ){
 			try {
 				OutOfBoundsException(card, index);

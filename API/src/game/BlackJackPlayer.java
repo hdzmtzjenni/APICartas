@@ -1,14 +1,22 @@
 package game;
 
-
-// Class that Extends Player and represents all the subclasses of player that know how to play BlackJack 
+/**
+ * Class that Extends Player and represents all the subclasses of player that know how to play BlackJack
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public abstract class BlackJackPlayer extends Player {
 	
-	public BlackJackPlayer(){ // Public Constructor 
-		
+	/**
+	 * Public Constructor 
+	 */
+	public BlackJackPlayer(){
 	}
+
+	/**
+	 * sum Of Hand is equal in all BlackJack Players 
+	 */
 	@Override
-	public int sumOfHand(){ // sum Of Hand is equacl in all BlackJack Players 
+	public int sumOfHand(){ 
 		int value=0;
 		boolean as= false;
 		

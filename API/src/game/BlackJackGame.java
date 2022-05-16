@@ -7,24 +7,21 @@ import game.exception.NoPlayersException;
 import game.exception.NullException;
 import game.exception.SameNameException;
 
-
-/*
+/** 
  * Class that manages how Black Jack is Played 
+ * Extends Cardgame 
  * @author Jennifer Hernandez,Gabriel Olvera
- *
  */
-
-
-public class BlackJackGame extends CardGame { // Extends Cardgame 
-	public static PackOfCards pack; // Pack of Cards 
+public class BlackJackGame extends CardGame { 
+	protected static PackOfCards pack; // Pack of Cards 
 	protected int IndexNextPlayer=0;
-	public static ArrayList<Player> playerList; // Players in game 
-	public static ArrayList<Player> stillPlaying ; // Players that haven't loss 
+	protected static ArrayList<Player> playerList; // Players in game 
+	protected static ArrayList<Player> stillPlaying ; // Players that haven't loss 
 	public static final int MAX_PLAYERS= 5; // Max Players
 	public static final int MIN_PLAYERS= 2; // Min Players to play 
 	
-	/*
-	 *   Public Constructor 
+	/** 
+	 *   Public Constructor of BlackJackGame
 	 */
 	public BlackJackGame(){
 		pack = new PackOfCards();
@@ -32,43 +29,78 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		stillPlaying = new ArrayList<>();
 	}
 
-	/*
+	/**
 	 *  Method that returns IntelligentPlayer 
 	 * @return one player instance of  IntelligentPlayer
 	 */
-	public static IntelligentPlayer createIntelligentPlayer() {
-		return new IntelligentPlayer();
+	public static BlackJackIntelligentPlayer createIntelligentPlayer() {
+		return new BlackJackIntelligentPlayer();
 	}
 	
-	// Method that returns Fool Player 
-	public static FoolPlayer createFoolPlayer() {
-		return new FoolPlayer(); // return Fool Player instance 
+	/**
+	 * Method that returns Fool Player
+	 * @return a new player instance of FoolPlayer
+	 */ 
+	public static BlackJackFoolPlayer createFoolPlayer() {
+		return new BlackJackFoolPlayer(); // return Fool Player instance 
 
 	}
 
-	public static ArrayList<Player> getPlayerList() { // Return Player List 
+	/**
+	 * Method that returns an Array with the players
+	 * @return playerList of blackJackGame
+	 */
+	public static ArrayList<Player> getPlayerList() { 
 		return playerList;
 	}
-	public static void setPlayerList(ArrayList<Player> playerList) { // Set Player List 
+
+	/**
+	 * Method that ser PlayerList
+	 * @param playerList
+	 */
+	public static void setPlayerList(ArrayList<Player> playerList) { 
 		BlackJackGame.playerList = playerList;
 	}
-	public int getIndexNextPlayer() { // Gets index of next Player to control the turns 
+
+	/**
+	 * Gets index of next Player to control the turns 
+	 * @return int of indexNextPlayer
+	 */
+	public int getIndexNextPlayer() { 
 		return IndexNextPlayer;
 	}
-	public void setIndexNextPlayer(int indexNextPlayer) { // Set Index of the next player, used to reset it 
+
+	/**
+	 * Set Index of the next player, used to reset it 
+	 * @param indexNextPlayer
+	 */
+	public void setIndexNextPlayer(int indexNextPlayer) { 
 		IndexNextPlayer = indexNextPlayer;
 	}
-	public static ArrayList<Player> getStillPlaying() { // returns the players that havent loss 
+
+	/**
+	 * Method that returns the players that havent loss 
+	 * @return Array of player that havent loss
+	 */
+	public static ArrayList<Player> getStillPlaying() { 
 		return stillPlaying;
 	}
-	public static void setStillPlaying(ArrayList<Player> stillPlaying) { // Set the players that havnt loss 
+
+	/**
+	 * Set the players that havent loss 
+	 * @param stillPlaying
+	 */
+	public static void setStillPlaying(ArrayList<Player> stillPlaying) { 
 		BlackJackGame.stillPlaying = stillPlaying;
 	}
 
-	@Override // Override of method that determines the next player to play 
+	/**
+	 * Override of method that determines the next player to play 
+	 */
+	@Override 
 	public Player nextPlayer() {
 		if(IndexNextPlayer==playerList.size()) { 
-            this.IndexNextPlayer=0; 
+            setIndexNextPlayer(0);
         } 
 		Player next = playerList.get(IndexNextPlayer);
 		IndexNextPlayer++;
@@ -76,13 +108,18 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		return next;
 	}
 
-
-	@Override // Override the method that eliminates all players 
+	/**
+	 * Override the method that eliminates all players 
+	 */
+	@Override 
 	public void reset() {
 		playerList.removeAll(playerList);
 	}
 
-	@Override // Override of method that check if game ended 
+	/**
+	 * Override of method that check if game ended 
+	 */
+	@Override 
 	public boolean endGame() {
 		int allReady = 0; // Sum 
 		for (Player p : playerList ) {
@@ -97,8 +134,12 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		return false; // round still not finished  
 	}
 
-	@Override // Override Of method get winner that gets who won 
+	/**
+	 * Override Of method get winner that gets who won
+	 */
+	@Override  
 	public ArrayList<Player> getWinner() { 
+		System.out.println("\n###### GAME END ######");
 		for (Player player : playerList) {
 			if (player.sumOfHand() <=21) {
 				stillPlaying.add(player); // adds to still playing to know how much winners 
@@ -120,7 +161,10 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		return winners; // Return players that have 21 
 	}
 
-	@Override //Override of method that adds player 
+	/**
+	 * Override of method that adds player 
+	 */
+	@Override 
 	public void addPlayer(String name, Player player){
 		try {
 			tryAddPlayer(name, player); // Method that throws exception of null and same name 
@@ -131,7 +175,14 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
         }
 	}
 
-	public void tryAddPlayer(String name, Player player) throws NullException, SameNameException{ // Function that checks exception 
+	/**
+	 * Function that checks exception 
+	 * @param name
+	 * @param player
+	 * @throws NullException
+	 * @throws SameNameException
+	 */
+	private void tryAddPlayer(String name, Player player) throws NullException, SameNameException{ 
 		if (player == null) throw new NullException();
 		for (Player player1 : playerList) { // Check each name 
             if(player1.name == name) throw new SameNameException(name);
@@ -140,11 +191,14 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 			player.name= name;
 			playerList.add(player); // add if everything right 
 		}
-		else System.out.printf("\n%s  no sabe jugar BlackJack",name);
+		else System.out.printf("\n%s  doesn't know how to play black jack",name);
 	}
 
 	
-	@Override // Override of method that removes player according to it's name 
+	/**
+	 * Override of method that removes player according to it's name 
+	 */
+	@Override 
 	public void removePlayer(String name) {
 		for (int i = 0; i<playerList.size();i++) {
 			Player player = playerList.get(i);
@@ -152,19 +206,22 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		}
 	}
 
+	/**
+	 * override method that starts the game 
+	 */
 	@Override 
-	public void start() { // override method that starts the game 
+	public void start() { 
 		System.out.println("\n==================== BLACK JACK GAME ====================");
 		// Se inicializan los arreglos y se bajarean las cartas
 		pack = new PackOfCards();
 		pack.startPack();
 		pack.sortCards();
-		this.IndexNextPlayer=0;
+		setIndexNextPlayer(0);
 		stillPlaying.removeAll(stillPlaying);
 		for (Player player : playerList) {
 			player.p_hand.removeAll(player.p_hand);
-            player.turn=0;
-            player.handReady=false;
+            player.setTurn(0);
+            player.setHandReady(false);
 		}
 		try {
 			tryStart();
@@ -174,7 +231,11 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		
 	}
 
-	public void tryStart() throws NoPlayersException{ // Function that throws the exception of No players
+	/**
+	 * Function that throws the exception of No players
+	 * @throws NoPlayersException
+	 */
+	private void tryStart() throws NoPlayersException{ 
 		if (playerList.size()< MIN_PLAYERS) throw new NoPlayersException(); // Check less than min 
 		//Se reparten 2 cartas a cada jugador para empezar el juego
 		Card card;
@@ -187,7 +248,10 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		}
 	}
 
-	@Override // Play Game overridem controls the whole game and 
+	/**
+	 * Play Game overridem controls the whole game 
+	 */
+	@Override 
 	public void playGame() {
 		try {
 			tryGame();
@@ -203,7 +267,11 @@ public class BlackJackGame extends CardGame { // Extends Cardgame
 		}
 	}
 
-	public void tryGame() throws NoPlayersException{ // throws No Players 
+	/**
+	 * throws No Players 
+	 * @throws NoPlayersException
+	 */
+	private void tryGame() throws NoPlayersException{ 
 		if (playerList.size()<MIN_PLAYERS) {
 			throw new NoPlayersException();
 		}

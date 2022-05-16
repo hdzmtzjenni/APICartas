@@ -1,7 +1,7 @@
 package game;
 import java.util.ArrayList;
 
-/*
+/** 
  * Pack Of Cards is a class that is used to start the game and to keep control that the cards are never repeated 
  * @author Jennifer Hernandez,Gabriel Olvera
  */
@@ -9,7 +9,7 @@ public class PackOfCards {
 // Atributos
 	public ArrayList<Card> pack; // Pack of cards 
 	
-	/*
+	/** 
 	 * constructor of class
 	 * Initializes de pack 
 	 */
@@ -17,7 +17,7 @@ public class PackOfCards {
 		pack = new ArrayList<>();
 	}
 
-	/*
+	/** 
 	 * Method that returns the pack of Class
 	 * @returns the pack 
 	 */
@@ -25,11 +25,8 @@ public class PackOfCards {
 		return pack;
 	}
 
-	public void setPack(ArrayList<Card> pack) {
-		this.pack = pack;
-	}
 	
-	/*
+	/** 
 	 * Method that assing the 52 cards to the pack 
 	 */
 	public void startPack() {
@@ -37,15 +34,14 @@ public class PackOfCards {
 		suits.add(Suits.HEART); suits.add(Suits.DIAMOND);
 		suits.add(Suits.PIKES); suits.add(Suits.CLUBS);
 		
-		int count=1;
 		for(int i =1; i<5; i++) {
 			for(int j=1; j<14; j++) {
 				if (i>2) {
-					Card e = new Card(count++,suits.get(i-1),j, null,"Black");
+					Card e = new Card(suits.get(i-1),j,"Black");
 					pack.add(e);
 				}
 				else{
-					Card e = new Card(count++,suits.get(i-1),j, null,"Red");
+					Card e = new Card(suits.get(i-1),j,"Red");
 					pack.add(e);
 				}
 				
@@ -53,7 +49,7 @@ public class PackOfCards {
 		}
 	}
 	
-	/*
+	/** 
 	 * Method that returns the pack 
 	 */
 	public void sortCards() {

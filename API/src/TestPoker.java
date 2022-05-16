@@ -15,9 +15,6 @@ public class TestPoker {
         
         Player player6 = BlackJackGame.createFoolPlayer();
         
-        
-        
-        
         poker.addPlayer("Jenni",player1);
         poker.addPlayer("Gabo", player2);
         poker.addPlayer("Pedrito", player3);
@@ -32,14 +29,16 @@ public class TestPoker {
 		poker.addPlayer("Paco", PokerGame.createPairPlayer());
 		poker.removePlayer("Pedrito");
 		poker.addPlayer("Mary", player6); // error de sintaxis: player6 no sabe jugar Poker (no es PokerPlayer)
-		poker.addPlayer("Nulo", null); // excepción: no se admiten apuntadores nulos
+		poker.addPlayer("Nulo", null); // excepcion: no se admiten apuntadores nulos
 		poker.start();
 		poker.playGame();
+
+        winners = poker.getWinner();
+		System.out.printf("\n Winner/Winners: %s \n",winners.toString());
+        
 		poker.reset();
 		poker.start(); 
-		poker.playGame();// Excepción: no hay jugadores; por cada juego, definan mínimo/máximo de jugadores
+		poker.playGame();// Excepcion: no hay jugadores; por cada juego, definan minimo/maximo de jugadores
 		
-        
-        
     }
 }

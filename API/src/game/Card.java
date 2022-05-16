@@ -1,6 +1,6 @@
 package game;
 
-/*
+/**
  * This Class Defines Primary Card. Fundamental of every single class. 
  * @author Jennifer Hernandez,Gabriel Olvera
  */
@@ -8,57 +8,53 @@ public class Card implements Comparable<Card>{ // Use a comparable implementatio
 //	Atributos
 	protected Suits suit;
 	protected int value;
-	protected int id;
 	protected  String  color;
 	
-	/*
-	 * Constructor of Card Class
-	 * @param id of each card
-	 * @param suit an instance of enum Suits that represents suit of card 
-	 * @param number is number of each Card 
-	 */
-	public Card(int id, Suits suit, int value,String image,String color) { // Public Constructor 
+	 /** 
+	  * Constructor of Card Class
+	  * @param suit an instance of enum Suits that represents suit of card 
+	  * @param value is number of each Card 
+	  * @param color of each Card
+	  */
+	public Card( Suits suit, int value,String color) { // Public Constructor 
 		setSuit(suit);
 		setValue(value);
-		setId(id);
 		setColor(color);
 	}
 
-
-    /*
+	/**
 	 * Set Suit of Card 
+	 * @param suit
 	 */
 	public void setSuit(Suits suit) {
 		this.suit = suit;
 	}
 
-	/*
+	/**
+	 * 
+	 * @param color
+	 */
+	private void setColor(String color) {
+		this.color = color;
+	}
+
+	/** 
 	 * Set Number of Card 
-	 * @param number new value of Card 
+	 * @param value new value of Card 
 	 */
 	public void setValue(int value) {
 		this.value = value;
 	}
 
-	/*
-	 * Set Id Of each Card 
-	 * @param id new id 
+	/** 
+	 * Return Color of Card
+	 * @return color
 	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
-	
-	public String getColor() { // Returns Color of Card 
+	public String getColor() { 
 		return color;
 	}
 
-	public void setColor(String color) { // Set Color of Card 
-		this.color = color;
-	}
-
-	/*
+	/**
 	 * Return Suit of Card using Suits enum 
 	 * @return Suit 
 	 */
@@ -66,7 +62,7 @@ public class Card implements Comparable<Card>{ // Use a comparable implementatio
 		return suit;
 	}
 
-	/*
+	/**
 	 * Method that return number of Card 
 	 * @return card value 
 	 */
@@ -74,8 +70,10 @@ public class Card implements Comparable<Card>{ // Use a comparable implementatio
 		return value;
 	}
 	
-	// Each Card Has its own value to string 
-
+	/**
+	 * Each Card Has its own value to string
+	 * @return String value
+	 */
 	public String getValueString() {
 		switch (value) {
 		case 1: return "As";
@@ -94,28 +92,23 @@ public class Card implements Comparable<Card>{ // Use a comparable implementatio
 		default: return "??";
 		}
 	}
-	/*
-	 * Return Id
-	 * @return Id 
+	
+	/** 
+	 *  Override Of String that prints suit and color 
+	 * @return String
 	 */
-	public int getId() {
-		return id;
-	}
-
-	@Override // Override Of String that prints suit and color 
+	@Override 
 	public String toString() {
 		return  getValueString() + "|"+suit + "|"+color;
 	}
 
-	@Override // Override of Compare to , this adds a comparable implementation and also allows to implement generic methods such as sort 
+	/**
+	 * Override of Compare to , this adds a comparable implementation and also allows to implement generic methods such as sort 
+	 */
+	@Override 
 	public int compareTo(Card o) {
 		if(this.value == o.value) return 0;
 		if(this.value< o.value) return -1;
 		return 1;
 	}
-	
-	
-	
-	
-	
 }

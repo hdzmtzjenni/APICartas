@@ -2,13 +2,20 @@ package game;
 
 import java.util.Collections;
 
-// SubClass of Poker Player that always is looking to generate the next pair , if not it always passes 
-
+/**
+ * SubClass of Poker Player that always is looking to generate the next pair , if not it always passes 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public class PokerPairPlayer extends PokerPlayer{
-    
-    public PokerPairPlayer() { // public Constructor 
-    }
-
+    /**
+	 * public Constructor 
+	 */
+    public PokerPairPlayer() { 
+	}
+	
+	/**
+	 * Override of the play function that each of Player Subclass has 
+	 */
     @Override
 	public void play() {
     	System.out.printf("\n\n----------------- Player %s -----------------",this.name);

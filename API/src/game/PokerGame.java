@@ -1,7 +1,6 @@
 package game;
 
-// PokerGame is used to control the Game of Poker and also to control the turns, the playerlist and the environment of playing poker.
-// Poker Game is a subclass of CardGame so it inherits all the methods necessary 
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +10,11 @@ import game.exception.NoPlayersException;
 import game.exception.NullException;
 import game.exception.SameNameException;
 
+/**
+ * PokerGame is used to control the Game of Poker and also to control the turns, the playerlist and the environment of playing poker.
+ * Poker Game is a subclass of CardGame so it inherits all the methods necessary 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
 public class PokerGame extends CardGame{
     public int IndexNextPlayer=-1; 
     public PackOfCards pack; // Initial Pack Of Cards 
@@ -19,37 +23,66 @@ public class PokerGame extends CardGame{
 	public static final int MAX_PLAYERS= 5; // MaxPlayers that can be added to a PokerGame Instance 
 	public static final int MIN_PLAYERS= 2; // Minimun of Players that are needed to play
 
-    public PokerGame(){ // Constructor of PokerGame 
+    /**
+     * Constructor of PokerGame 
+     */
+    public PokerGame(){ 
         playerList = new ArrayList<>();
     }
 
-    public static PokerPairPlayer createPairPlayer(){ // Function that returns an instance of PokerSmartPlayer
+    /**
+     * Function that returns an instance of PokerSmartPlayer
+     * @return an instance of Pair Player
+     */
+    public static PokerPairPlayer createPairPlayer(){ 
         return new PokerPairPlayer();
     }
 
-    public static PokerRandomPlayer createRandomPlayer(){ // Function that returns an instance of PokerRandomPlayer 
+    /**
+     * Function that returns an instance of PokerRandomPlayer 
+     * @return an instance of Random Player
+     */
+    public static PokerRandomPlayer createRandomPlayer(){ 
         return new PokerRandomPlayer();
     }
     
-
-    public static ArrayList<Card> getInTable() { // Function that returns the ArrayList<Card> in table 
+    /**
+     * Function that returns the ArrayList<Card> in table 
+     */
+    public static ArrayList<Card> getInTable() { 
         return inTable;
     }
 
-    public static void setInTable(ArrayList<Card> inTable) { // Function that adds to table the cards within ArrayList<Card> inTable 
+    /**
+     * Function that adds to table the cards within ArrayList<Card> inTable 
+     * @param inTable
+     */
+    public static void setInTable(ArrayList<Card> inTable) { 
         PokerGame.inTable = inTable;
     }
     
-
-    public int getIndexNextPlayer() { // Returns the index of next Player 
+    /**
+     * Returns the index of next Player 
+     * @return indexNextPlayer
+     */
+    public int getIndexNextPlayer() { 
         return IndexNextPlayer;
     }
 
-    public void setIndexNextPlayer(int indexNextPlayer) { // Set the marker on which Player is Next 
+    /**
+     * Set the marker on which Player is Next 
+     * @param indexNextPlayer
+     */
+    public void setIndexNextPlayer(int indexNextPlayer) { 
         IndexNextPlayer = indexNextPlayer;
     }
     
-    public PokerRanking getRankingFromInt( int ranking) { // Function that based on an int it returns the PokerRanking instance that is the same of the value of int 
+    /**
+     * Function that based on an int it returns the PokerRanking instance that is the same of the value of int 
+     * @param ranking
+     * @return Instance of PokerRanking
+     */
+    public PokerRanking getRankingFromInt( int ranking) { 
     		
     	PokerRanking PR;
     	
@@ -77,17 +110,21 @@ public class PokerGame extends CardGame{
          default: PR = PokerRanking.HighCard; // Default Case 
                   break;
      }
-    	 return PR; // Return Instance of PokerRanking
+    	 return PR; 
     }
 
-    @Override // Override of function within CardGame that determines the winner. 
+    /**
+     * Override of function within CardGame that determines the winner. 
+     */
+    @Override 
     public ArrayList<Player> getWinner() {
+        System.out.println("\n###### GAME END ######");
         ArrayList<Player> stillPlaying = new ArrayList<>(); // Creates an arraylist of players that will be used to determine which of the players have the same value
 		int max=0; // Sum Variable to determine the Max Value of Hand
         // The Max Value of hand is calculated 
 		for (Player player1: playerList) { // for each player in playerlist(All Players that have played )
 			PokerRanking PR = getRankingFromInt(player1.sumOfHand()); // Determines as a enum PokerRanking instance the value of the hand 
-            System.out.printf("\nPlayer %s has: %s of %s ",player1.name, PR.toString(),player1.getMaxPlayableCard().getValueString()); // Print of Play using to String of enum and attribute MaxPlayableValue 
+            System.out.printf("Player %s has: %s of %s\n",player1.name, PR.toString(),player1.getMaxPlayableCard().getValueString()); // Print of Play using to String of enum and attribute MaxPlayableValue 
 			if (player1.sumOfHand()>max) {
 				max = player1.sumOfHand(); // Determines the max value of hand
 			}
@@ -123,7 +160,10 @@ public class PokerGame extends CardGame{
         return winners; // return the winners, ties are possible in some cases, the players with same PowerRanking and same MaxPlayableValue win 
     }
  
-    @Override // Override of method AddPlayer of CardGme 
+    /**
+     * Override of method AddPlayer of CardGme 
+     */
+    @Override 
     public void addPlayer(String name, Player player) {
         try { // Exception management 
 			tryAddPlayer(name, player); // use of TryAddPlayer that throws NullException and SameNameException
@@ -134,7 +174,14 @@ public class PokerGame extends CardGame{
         }
     }
 
-	public void tryAddPlayer(String name, Player player) throws NullException, SameNameException{ // Exception Thrower that uses NullException and SameNameExcpetion
+    /**
+     * Exception Thrower that uses NullException and SameNameExcpetion
+     * @param name
+     * @param player
+     * @throws NullException
+     * @throws SameNameException
+     */
+	private void tryAddPlayer(String name, Player player) throws NullException, SameNameException{ 
 		if (player == null) throw new NullException(); // Exception Thrown when detecterd a null player 
         for (Player player1 : playerList) {
             if(player1.name == name) throw new SameNameException(name); // Exception Thrown when players have same name 
@@ -144,10 +191,13 @@ public class PokerGame extends CardGame{
 			playerList.add(player); // Adds to PlayerList 
 
 		}
-		else System.out.printf("This player doesn't know how to play poker"); // Console Print
+		else System.out.printf("\n%s doesn't know how to play poker\n",name); // Console Print
 	}
     
-    @Override // Override of method Remove Player of CardGame 
+    /**
+     * Override of method Remove Player of CardGame 
+     */
+    @Override 
     public void removePlayer(String name) { // Removes Player based on name 
         for (int i = 0; i<playerList.size();i++) { 
 			Player player = playerList.get(i); // Gets instance of players within Playerlist 
@@ -155,7 +205,10 @@ public class PokerGame extends CardGame{
 		}
     }
 
-    @Override // Override of method start of CardGame 
+    /**
+     * Override of method start of CardGame 
+     */
+    @Override 
     public void start(){
         System.out.println("\n==================== POKER ===================="); // Console Output 
 
@@ -163,12 +216,12 @@ public class PokerGame extends CardGame{
         pack = new PackOfCards(); // new pack of cards that ensures that we are only playing with one pack and no repeated cards 
 		pack.startPack(); //Adds card to Pack
 		pack.sortCards(); // Sorts pack once initialized 
-		this.IndexNextPlayer=-1; 
+		setIndexNextPlayer(-1); 
 
 		for (Player player : playerList) { // For each player all Cards that were previous in p_hand are removed 
 			player.p_hand.removeAll(player.p_hand); //reset
-            player.turn=0; //reset
-            player.handReady=false; //reset
+            player.setTurn(0);; //reset
+            player.setHandReady(false);; //reset
 		}
 
         try {
@@ -187,7 +240,11 @@ public class PokerGame extends CardGame{
         
     }
 
-    public void tryStart() throws NoPlayersException{ // Method that throws NoPlayersException 
+    /**
+     * Method that throws NoPlayersException 
+     * @throws NoPlayersException
+     */
+    private void tryStart() throws NoPlayersException{ 
         if(playerList.size()<MIN_PLAYERS) throw new NoPlayersException(); // if the list size is less than min_players throw the exception 
         Card card; 
         for (int i = 0; i< playerList.size(); i++) { // Add Card one by one and eliminate them from pack 
@@ -198,25 +255,35 @@ public class PokerGame extends CardGame{
             }
         }
     }
+
+    /**
+     * Override reset method from CardGame 
+     */
     @Override
-    public void reset() { //Override reset method from CardGame 
+    public void reset() { 
 		playerList.removeAll(playerList); // all Players are removed
         
     }
+
+    /**
+     * Override next player method from CardGame 
+     */
     @Override
-    public Player nextPlayer(){ //Override next player method from CardGame 
+    public Player nextPlayer(){ 
         IndexNextPlayer++; // add to counter
         if(IndexNextPlayer==playerList.size()) { 
-            this.IndexNextPlayer=0; // resets the counter 
+            setIndexNextPlayer(0); // resets the counter 
         } 
 		Player next = playerList.get(IndexNextPlayer);// Get Instance of Player 
 
 		return next; //Return Instance 
     }
 
-
+    /**
+     * Function that determines when the game ends 
+     */
     @Override
-    public boolean endGame() { //Function that determines when the game ends 
+    public boolean endGame() { 
         int allReady = 0; // Variable that knows if everyone is ready 
 		for (Player p : playerList ) {// For each player check if handReady 
 			if (p.handReady == true) {
@@ -230,8 +297,11 @@ public class PokerGame extends CardGame{
 		return false; // aun no se termina la ronda 
     }
 
+    /**
+     * Override PlayGame function from Cardgame 
+     */
     @Override
-    public void playGame() { // Override PlayGame function from Cardgame 
+    public void playGame() { 
         //The Game runs until endGame doesnt happen 
         
         while(!endGame()) { // while endgame does not return false 
@@ -252,14 +322,19 @@ public class PokerGame extends CardGame{
                     p1.play();
                     cards = p1.getP_hand();
 			        System.out.println("\nHand \n"+ cards); // print hand 
-                    p1.handReady=true; // also put handready true 
+                    p1.setHandReady(true); // also put handready true 
                     p1 = nextPlayer();
                 } 
             }
 		}
     }
 
-    // Function that takes indexes from arrayList cards and swaps them. Method takes indexes as [1-5]
+    /**
+     * Method that takes indexes from arrayList cards and swaps them. Method takes indexes as [1-5]
+     * @param indexInTable
+     * @param indexHand
+     * @param p_hand
+     */
     public static void swapCards( int indexInTable, int indexHand ,ArrayList<Card> p_hand){
 		Card temp= inTable.get(indexInTable-1); // get index and accomodates it
 		inTable.set(indexInTable-1, p_hand.get(indexHand-1)); //gets catd

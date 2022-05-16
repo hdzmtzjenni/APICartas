@@ -1,13 +1,24 @@
 package game;
 
+/**
+ * FoolPlayer is a subclass of BlackJackPlayer designed to emulate the playstyle of a BlackJackPlayer that every turn has a 80% chance of drawing another card
+ * not mattering how close he is to 21. 
+ * @author Jennifer Hernandez,Gabriel Olvera
+ */
+public class BlackJackFoolPlayer extends BlackJackPlayer{
 
-// FoolPlayer is a subclass of BlackJackPlayer designed to emulate the playstyle of a BlackJackPlayer that every turn has a 80% chance of drawing another card
-// not mattering how close he is to 21. 
+	/**
+	 * public Constructor
+	 */
+	public BlackJackFoolPlayer(){
 
-public class FoolPlayer extends BlackJackPlayer{
-
+	}
+	
+	/**
+	 * Override of the play function that everytype of BlackJackPlayer has.
+	 */
 	@Override
-	public void play() { // Override of the play function that everytype of BlackJackPlayer has.
+	public void play() { 
 		System.out.printf("\n\n----------------- Player %s -----------------",this.name); 
 		
 
